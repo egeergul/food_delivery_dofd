@@ -40,29 +40,20 @@ class _MainFoodPageState extends State<MainFoodPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
               children: [
-                Column(
-                  children: [
-                    BigText(text: "U.S.A", color: AppColors.mainColor, size: 30, ),
-                    Row(
-                      children: [
-                        SmallText(text: "Virginia", color: Colors.black54,),
-                        Icon(Icons.arrow_drop_down_rounded),
-                      ],
-                    ),
+                Container(
+                  margin: EdgeInsets.only(top: Dimensions.height10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
 
-                  ],
-                ),
-                Center(
-                  child: Container(
-                    width: Dimensions.width45,
-                    height: Dimensions.height45,
-                    child: Icon(Icons.search, color: Colors.white, size: Dimensions.iconSize24, ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimensions.radius15),
-                      color: AppColors.mainColor,
-                    ),
+                    children: [
+                      BigText(text: "Den Of The Divyne", color: AppColors.mainColor, size: 30, ),
+
+
+                    ],
                   ),
-                )
+                ),
+
               ],
             ),
           ),
