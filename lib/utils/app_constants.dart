@@ -12,6 +12,7 @@ class AppConstants {
   static const String REGISTERATION_URI = "/api/v1/auth/register";
   static const String LOGIN_URI = "/api/v1/auth/login";
   static const String USER_INFO_URI="/api/v1/customer/info";
+  static const String DELETE_ACCOUNT="/api/v1/auth/delete";
 
   //new
   static const String USER_ADDRESS = "user_address";

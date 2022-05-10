@@ -71,4 +71,8 @@ class AuthController extends GetxController implements GetxService {
   bool clearSharedData() {
     return authRepo.clearSharedData();
   }
+
+  Future <Response> deleteAccount(String email) async {
+    return await authRepo.deleteAccount(email);
+  }
 }

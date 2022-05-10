@@ -26,6 +26,29 @@ class AccountPage extends StatelessWidget {
       Get.find<UserController>().getUserInfo();
       print("User has logged in");
     }
+
+    _deleteAccount(String email){
+      if (Get.find<AuthController>()
+          .userLoggedIn()) {
+
+
+        Get.find<AuthController>()
+            .clearSharedData();
+
+        Get.find<AuthController>().deleteAccount(email);
+        Get.find<CartController>().clear();
+        Get.find<CartController>()
+            .clearCartHistory();
+        Get.find<LocationController>().clearAddressList();
+
+        //Get.offNamed(
+          //  RouteHelper.getSignInPage());
+      } else {
+        Get.offNamed(
+            RouteHelper.getSignInPage());
+      }
+    }
+
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -166,10 +189,11 @@ class AccountPage extends StatelessWidget {
                                       bigText: BigText(
                                       text: "Messages",
                                       ),
+                                      ),
+                                      SizedBox(
+                                      height: Dimensions.height20,
                                       ),*/
-                                  SizedBox(
-                                    height: Dimensions.height20,
-                                  ),
+                                  // log out
                                   GestureDetector(
                                     onTap: () {
                                       if (Get.find<AuthController>()
@@ -203,6 +227,52 @@ class AccountPage extends StatelessWidget {
                                       ),
                                     ),
                                   ),
+
+                                  // delete my account
+                                  SizedBox(
+                                    height: Dimensions.height20,
+                                  ),
+                                  GestureDetector(
+                                    onTap: (){
+                                      print("Deleting account...");
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: Text("Warning!"),
+                                            content: Text("Are you sure you want to delete this account?"),
+                                              actions: <Widget>[
+                                                TextButton(
+                                                    child: Text('Yes'),
+                                                    onPressed: () {
+                                                      _deleteAccount(userController.userModel!.email.toString());
+
+                                                    }),
+                                                TextButton(
+                                                    child: Text('No'),
+                                                    onPressed: () {
+                                                      Navigator.of(context).pop();
+                                                    })
+                                              ]
+
+                                          );
+                                        }
+                                      );
+                                    },
+                                    child: AccountWidget(
+                                      appIcon: AppIcon(
+                                        icon: Icons.delete_forever,
+                                        backgroundColor: Colors.redAccent,
+                                        iconColor: Colors.white,
+                                        size: Dimensions.height10 * 5,
+                                        iconSize: Dimensions.height10 * 5 / 2,
+                                      ),
+                                      bigText: BigText(
+                                        text: "Delete my account",
+                                      ),
+                                    ),
+                                  ),
+
                                 ],
                               ),
                             ),
@@ -259,5 +329,7 @@ class AccountPage extends StatelessWidget {
                   ),
                 );
         }));
+
+
   }
 }
