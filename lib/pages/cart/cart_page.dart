@@ -270,15 +270,11 @@ class CartPage extends StatelessWidget {
                 onTap: () {
                   // popularProduct.addItem(product);
                   if(Get.find<AuthController>().userLoggedIn()){
-                    //cartController.addToHistory();//BU TUTORIALDAN SILINMIŞ MII????
                     if(Get.find<LocationController>().addressList.isEmpty){
-                      print("ADDRESS PAGE E GIDIYORUMM" + Get.find<LocationController>().addressList.isEmpty.toString());
                       Get.toNamed(RouteHelper.getAddressPage());
                     }else{
-                      print("HERARSDADASDSAAAAAAAAAAAAAAAAAAA");
                       Get.offNamed(RouteHelper.getInitial());
                     }
-                    print("tapped");
                   }
                   else{
                     Get.toNamed(RouteHelper.getSignInPage());

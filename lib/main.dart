@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/controllers/cart_controller.dart';
 import 'package:food_delivery/controllers/popular%20_product_controller.dart';
-import 'package:food_delivery/pages/auth/sign_up_page.dart';
-import 'package:food_delivery/pages/auth/sing_in_page.dart';
-import 'package:food_delivery/pages/cart/cart_page.dart';
-import 'package:food_delivery/pages/home/food_page_body.dart';
-import 'package:food_delivery/pages/home/main_food_page.dart';
-import 'package:food_delivery/pages/splash/splash_page.dart';
 import 'package:food_delivery/routes/route_helper.dart';
-import 'package:food_delivery/pages/food/recommended_food_detail.dart';
 import 'package:food_delivery/utils/colors.dart';
 import "package:get/get.dart";
 import 'controllers/recommended_food_controller.dart';
@@ -32,18 +25,13 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          //home: SplashScreen(),
-          //home: SignInPage(),
-
-          initialRoute:   RouteHelper.getSplashPage(),  //SIGNUP() ÇEVİR
-          //initialRoute: RouteHelper.getInitial() ,
-          getPages: RouteHelper.routes ,
+          initialRoute:   RouteHelper.getSplashPage(),
+          getPages: RouteHelper.routes,
           theme: ThemeData(
             primaryColor: AppColors.mainColor,
             fontFamily: 'Lato '
           ),
         );
-
       });
     });
   }

@@ -9,4 +9,7 @@ class ResponseModel{
 
   String get message => _message;
   bool get isSuccess => _isSuccess;
+
+
+
 }
