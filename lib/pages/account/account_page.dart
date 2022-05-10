@@ -155,18 +155,18 @@ class AccountPage extends StatelessWidget {
                                     height: Dimensions.height20,
                                   ),
                                   //message
-                                  AccountWidget(
-                                    appIcon: AppIcon(
+                                  /**AccountWidget(
+                                      appIcon: AppIcon(
                                       icon: Icons.message_outlined,
                                       backgroundColor: Colors.redAccent,
                                       iconColor: Colors.white,
                                       size: Dimensions.height10 * 5,
                                       iconSize: Dimensions.height10 * 5 / 2,
-                                    ),
-                                    bigText: BigText(
+                                      ),
+                                      bigText: BigText(
                                       text: "Messages",
-                                    ),
-                                  ),
+                                      ),
+                                      ),*/
                                   SizedBox(
                                     height: Dimensions.height20,
                                   ),
