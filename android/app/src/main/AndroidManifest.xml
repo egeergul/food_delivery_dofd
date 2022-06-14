@@ -1,11 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.food_delivery">
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
    <application
         android:label="food_delivery"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+       android:usesCleartextTraffic="true"
+       android:networkSecurityConfig="@xml/network_security_config">
        <meta-data android:name="com.google.android.geo.API_KEY"
            android:value="AIzaSyA7bGVqm7Q6wnrIbKZHZ4ZxiEtwPYkjQJw"/>
         <activity

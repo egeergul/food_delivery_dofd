@@ -6,6 +6,7 @@ import 'package:food_delivery/pages/auth/sing_in_page.dart';
 import 'package:food_delivery/pages/cart/cart_page.dart';
 import 'package:food_delivery/pages/home/food_page_body.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
+import 'package:food_delivery/pages/order/orders_page.dart';
 import 'package:food_delivery/pages/splash/splash_page.dart';
 import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/pages/food/recommended_food_detail.dart';
@@ -32,10 +33,10 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          //home: SplashScreen(),
-          //home: SignInPage(),
+          home: SplashScreen(),
+          //home: OrdersPage(),
 
-          initialRoute:   RouteHelper.getSplashPage(),  //SIGNUP() ÇEVİR
+          //initialRoute:   RouteHelper.getSplashPage(),  //SIGNUP() ÇEVİR BORA DEĞİŞTİRDİ
           //initialRoute: RouteHelper.getInitial() ,
           getPages: RouteHelper.routes ,
           theme: ThemeData(

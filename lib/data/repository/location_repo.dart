@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:food_delivery/data/api/api_client.dart';
 import 'package:food_delivery/models/address_model.dart';
 import 'package:food_delivery/utils/app_constants.dart';
@@ -36,6 +37,18 @@ class LocationRepo{
   }
 
   Future<Response> getZone(String lat, String lng) async{
-    return await apiClient.getData('${AppConstants.ZONE_URI}?lat=$lat&lng=$lng');
+    print("GET ZONE REPODAYIM");
+    print('${AppConstants.ZONE_URI}?lat=$lat&lng=$lng');
+    return await apiClient.getData('${AppConstants.ZONE_URI}/?lat=$lat&lng=$lng');
+    //return await apiClient.getData('http://192.168.0.13:8000/api/v1/config/get-zone-id?lat=45.521563&lng=-122.677433');
   }
+
+  Future<Response> searchLocation(String text) async {
+    return await apiClient.getData('${AppConstants.SEARCH_LOCATION_URI}?search_text=$text');
+  }
+
+  Future<Response> setLocation(String placeID) async{
+    return await apiClient.getData('${AppConstants.PLACE_DETAILS_URI}?placeid=$placeID');
+  }
+
 }

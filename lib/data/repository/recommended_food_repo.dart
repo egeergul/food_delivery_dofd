@@ -9,7 +9,7 @@ class RecommendedProductRepo extends GetxService {
 
   Future<Response> getRecommendedProductList()  async{
 
-    return await  apiClient.getData( AppConstants.RECOMMENDED_PRODUCT_URI);
-
+    Response response =  await  apiClient.getData( AppConstants.RECOMMENDED_PRODUCT_URI);
+    return response;
   }
 }
