@@ -21,13 +21,12 @@ class AuthController extends GetxController implements GetxService {
       authRepo.saveUserToken(response.body["token"]);
       responseModel = ResponseModel(true, response.body["token"]);
     } else {
-      print(response.body.toString());
-      print(response.body['errors']);
-      print(response.body['errors'][0]['message']);
-      String error = response.body['errors'][0]['message'] == null
-          ? "Something went wrong! Please make sure your credentials are correct and try again"
-          : response.body['errors'][0]['message'];
-      responseModel = ResponseModel(false, error);
+
+      print("else in auth controller" + response.statusCode.toString());
+      print(response.statusCode);
+      responseModel = ResponseModel(false, response.statusText!);
+
+
     }
     _isLoading = false;
     update();

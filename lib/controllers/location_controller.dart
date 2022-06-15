@@ -1,5 +1,8 @@
 import 'dart:convert';
+import 'dart:core';
 
+import 'package:flutter/cupertino.dart';
+import 'package:food_delivery/data/api/api_checker.dart';
 import 'package:food_delivery/data/repository/location_repo.dart';
 import 'package:food_delivery/models/address_model.dart';
 import 'package:food_delivery/models/response_model.dart';
@@ -7,6 +10,7 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_webservice/src/places.dart';
 
 class LocationController extends GetxController implements GetxService {
   LocationRepo locationRepo;
@@ -53,6 +57,11 @@ class LocationController extends GetxController implements GetxService {
   bool _buttonDisabled = true; //showing and hiding the button as the map loads
   bool get buttonDisabled => _buttonDisabled;
 
+
+  /*
+  save the google map suggestions for address
+   */
+  List<Prediction> _predictionList = [];
   void setMapController(GoogleMapController mapController) {
     _mapController = mapController;
   }
@@ -83,10 +92,11 @@ class LocationController extends GetxController implements GetxService {
               speedAccuracy: 1,
               speed: 1);
         }
-        ResponseModel _responseModel = await getZone(
+          ResponseModel _responseModel = await getZone(
             position.target.latitude.toString(),
             position.target.longitude.toString(),
             false);
+        print("RESPONSE MODEL PRINTLIYORUM " + _responseModel.message.toString());
         /*
         if button value is false we are in the service area
          */
@@ -224,9 +234,11 @@ class LocationController extends GetxController implements GetxService {
     Response response  = await locationRepo.getZone(lat, lng);
     if(response.statusCode==200){
       _inZone = true;
+      print("INZONE 200");
       _responseModel = ResponseModel(true, response.body["zone_id"].toString());
     }
     else{
+      print("INZONE ELSE 200" + response.statusCode.toString());
       _inZone = false;
       _responseModel = ResponseModel(true, response.statusText!);
     }
@@ -235,6 +247,7 @@ class LocationController extends GetxController implements GetxService {
     } else {
       _isLoading = false;
     }
+    _inZone = true;
     /*
     for debugging
      */
@@ -242,5 +255,48 @@ class LocationController extends GetxController implements GetxService {
     update();
 
     return _responseModel;
+  }
+
+  Future<List<Prediction>>searchLocation(BuildContext context, String text) async {
+    if(text.isNotEmpty){
+      Response response = await locationRepo.searchLocation(text);
+      if(response.statusCode ==200&&response.body['status'] == 'OK'){
+        _predictionList = [];
+        response.body['predictions'].forEach((prediction)=>_predictionList.add(Prediction.fromJson(prediction)));
+      }else{
+        ApiChecker.checkApi(response);
+      }
+    }
+    return _predictionList;
+  }
+
+  setLocation(String placeID, String address, GoogleMapController mapController) async {
+    _loading = true;
+    update();
+    PlacesDetailsResponse detail;
+    Response response = await locationRepo.setLocation(placeID);
+    detail = PlacesDetailsResponse.fromJson(response.body);
+    _pickPosition = Position(
+      latitude: detail.result.geometry!.location.lat,
+      longitude: detail.result.geometry!.location.lng,
+      timestamp: DateTime.now(),
+      accuracy: 1,
+      altitude: 1,
+      heading: 1,
+      speed: 1,
+      speedAccuracy: 1
+    );
+    _pickPlacemark = Placemark(name: address);
+    _changeAddress = false;
+    if(!mapController.isNull){
+      mapController.animateCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(target: LatLng(
+          detail.result.geometry!.location.lat,
+          detail.result.geometry!.location.lng
+        ), zoom: 17)
+      ));
+    }
+    _loading = false;
+    update();
   }
 }
