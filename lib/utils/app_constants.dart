@@ -18,7 +18,6 @@ class AppConstants {
   orders
    */
   static const String PLACE_ORDER_URI ='/api/v1/customer/order/place';
-
   static const String ORDER_LIST_URI = "/api/v1/customer/order/list"; // EGE BORANINKI ADAM DA AYNISINI OLUŞTURDU
   static const String ALL_ORDERS_LIST_URI = "/api/v1/customer/order/get-all-orders"; //EGE BORANINKI
 
