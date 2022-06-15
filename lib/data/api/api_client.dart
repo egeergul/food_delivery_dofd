@@ -49,6 +49,7 @@ class ApiClient extends GetConnect implements GetxService {
 
   Future<Response> deleteData(String uri) async {
     try{
+      print("delete api ye girdi");
       Response response = await delete(uri);
       return response;
     } catch(e) {

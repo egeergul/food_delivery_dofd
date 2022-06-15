@@ -8,6 +8,8 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../../controllers/popular _product_controller.dart';
 import '../../controllers/recommended_food_controller.dart';
+import '../../routes/route_helper.dart';
+import '../../widgets/app_icon.dart';
 import 'food_page_body.dart';
 
 class MainFoodPage extends StatefulWidget {
@@ -54,16 +56,49 @@ class _MainFoodPageState extends State<MainFoodPage> {
                   ],
                 ),
                 Center(
-                  child: Container(
-                    width: Dimensions.width45,
-                    height: Dimensions.height45,
-                    child: Icon(Icons.shopping_cart, color: Colors.white, size: Dimensions.iconSize24, ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimensions.radius15),
-                      color: AppColors.mainColor,
-                    ),
+                  child:
+                  //GetBuilder<PopularProductController>(builder: (controller) {
+                    //return GestureDetector(
+                     GestureDetector(
+                      onTap: () {
+                        //if (controller.totalItems >= 1) {
+                          Get.toNamed(RouteHelper.getCartPage());
+                        //}
+                      },
+                      child: Stack(
+                        children: [
+                          AppIcon(icon: Icons.shopping_cart_outlined),
+                         /* controller.totalItems >= 1
 
-                  ),
+                              ? Positioned(
+                            right: 0,
+                            top: 0,
+                            child: AppIcon(
+                              icon: Icons.circle,
+                              size: 20,
+                              iconColor: Colors.transparent,
+                              backgroundColor: AppColors.mainColor,
+                            ),
+                          )
+                              : Container(),
+                          Get.find<PopularProductController>().totalItems >= 1
+                              ? Positioned(
+                            right: 3,
+                            top: 3,
+                            child: BigText(
+                              text: Get.find<PopularProductController>()
+                                  .totalItems
+                                  .toString(),
+                              size: 12,
+                              color: Colors.white,
+                            ),
+                          )
+                              : Container() */
+                        ],
+                      ),
+                    )//; KONULACAK
+                  //}) //AÇILACAK
+                      //end of get builder
                 ),
 
               ],

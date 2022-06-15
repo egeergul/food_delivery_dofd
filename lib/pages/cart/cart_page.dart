@@ -38,12 +38,12 @@ class CartPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  AppIcon(
+                  /*AppIcon(
                     icon: Icons.arrow_back,
                     iconColor: Colors.white,
                     backgroundColor: AppColors.mainColor,
                     iconSize: Dimensions.iconSize24,
-                  ),
+                  ),*/
                   SizedBox(
                     width: Dimensions.width20 * 5,
                   ),
@@ -58,12 +58,12 @@ class CartPage extends StatelessWidget {
                       iconSize: Dimensions.iconSize24,
                     ),
                   ),
-                  AppIcon(
+                  /*AppIcon(
                     icon: Icons.shopping_cart,
                     iconColor: Colors.white,
                     backgroundColor: AppColors.mainColor,
                     iconSize: Dimensions.iconSize24,
-                  ),
+                  ),*/
                 ],
               )),
           //body

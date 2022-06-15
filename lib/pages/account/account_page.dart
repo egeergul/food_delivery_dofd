@@ -31,7 +31,6 @@ class AccountPage extends StatelessWidget {
       if (Get.find<AuthController>()
           .userLoggedIn()) {
 
-
         Get.find<AuthController>()
             .clearSharedData();
 
@@ -41,8 +40,7 @@ class AccountPage extends StatelessWidget {
             .clearCartHistory();
         Get.find<LocationController>().clearAddressList();
 
-        //Get.offNamed(
-          //  RouteHelper.getSignInPage());
+        Get.offNamed(RouteHelper.getSignInPage());
       } else {
         Get.offNamed(
             RouteHelper.getSignInPage());

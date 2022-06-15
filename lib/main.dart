@@ -9,6 +9,12 @@ import 'package:food_delivery/pages/home/food_page_body.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
 import 'package:food_delivery/pages/order/orders_page.dart';
 import 'package:food_delivery/pages/splash/splash_page.dart';
+import 'package:food_delivery/routes/route_helper.dart';
+import 'package:food_delivery/utils/colors.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'controllers/recommended_food_controller.dart';
+import 'helper/dependencies.dart' as dep;
 
 
 void main() async   {
