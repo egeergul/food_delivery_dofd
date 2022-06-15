@@ -41,7 +41,7 @@ class SignInPage extends StatelessWidget {
             Get.toNamed(RouteHelper.getInitial());
           } else {
             print("else girdi");
-            showCustomSnackBar(status.message);
+            showCustomSnackBar("Please check your email address and your password and try again!");
           }
         });
       }

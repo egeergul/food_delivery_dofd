@@ -9,13 +9,18 @@ class AppTextField extends StatelessWidget {
   final String hintText;
   final IconData icon;
   bool isObscure;
+  TextInputType keyboardType;
+
+
+
 
   AppTextField(
       {Key? key,
       required this.textController,
       required this.hintText,
       required this.icon,
-      this.isObscure = false})
+      this.isObscure = false,
+        this.keyboardType =TextInputType.text })
       : super(key: key);
 
   @override
@@ -35,6 +40,7 @@ class AppTextField extends StatelessWidget {
                 color: Colors.grey.withOpacity(0.2))
           ]),
       child: TextField(
+        keyboardType: keyboardType,
         obscureText: isObscure?true:false,
         controller: textController,
         decoration: InputDecoration(

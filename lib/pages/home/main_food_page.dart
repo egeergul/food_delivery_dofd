@@ -40,6 +40,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
               children: [
+
                 Column(
                   children: [
                     BigText(text: "U.S.A", color: AppColors.mainColor, size: 30, ),
@@ -61,8 +62,10 @@ class _MainFoodPageState extends State<MainFoodPage> {
                       borderRadius: BorderRadius.circular(Dimensions.radius15),
                       color: AppColors.mainColor,
                     ),
+
                   ),
-                )
+                ),
+
               ],
             ),
           ),

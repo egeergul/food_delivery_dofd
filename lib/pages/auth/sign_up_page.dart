@@ -22,6 +22,7 @@ class SignUpPage extends StatelessWidget {
     var passwordController = TextEditingController();
     var nameController = TextEditingController();
     var phoneController = TextEditingController();
+    var ageController = TextEditingController();
     var signUpImages = ["t.png", "f.png", "g.png"];
 
     void _registration(AuthController authController) {
@@ -29,8 +30,13 @@ class SignUpPage extends StatelessWidget {
       String phone = phoneController.text.trim();
       String password = passwordController.text.trim();
       String email = emailController.text.trim();
+      String age = ageController.text.trim();
 
-      if (name.isEmpty) {
+      if (age.isEmpty) {
+        showCustomSnackBar("Type in your age!", title: "Age Verification");
+      } else if (int.parse(age) < 21) {
+        showCustomSnackBar("We are sorry! Only users above tha age 21 can use our application", title: "Age verification");
+      } else if (name.isEmpty) {
         showCustomSnackBar("Type in your name!", title: "Name");
       } else if (phone.isEmpty) {
         showCustomSnackBar("Type in your phone number!", title: "Phone");
@@ -46,14 +52,13 @@ class SignUpPage extends StatelessWidget {
             "Your password needs to be longer than 6 characters!",
             title: "Weak password");
       } else {
-        showCustomSnackBar("ALL WENT WELL", title: "PERFECT");
+        //showCustomSnackBar("ALL WENT WELL", title: "PERFECT");
         SignUpBody signUpBody = new SignUpBody(
             name: name, phone: phone, email: email, password: password);
         authController.registration(signUpBody).then((status) {
           if (status.isSuccess) {
             Get.toNamed(RouteHelper.getInitial());
           } else {
-            print("else girdi");
             showCustomSnackBar(status.message);
           }
         });
@@ -86,6 +91,7 @@ class SignUpPage extends StatelessWidget {
 
                       // email
                       AppTextField(
+                          keyboardType: TextInputType.emailAddress,
                           textController: emailController,
                           hintText: "Email",
                           icon: Icons.email),
@@ -115,9 +121,19 @@ class SignUpPage extends StatelessWidget {
 
                       // phone
                       AppTextField(
+                          keyboardType: TextInputType.phone,
                           textController: phoneController,
                           hintText: "Phone",
                           icon: Icons.phone),
+                      SizedBox(
+                        height: Dimensions.height20,
+                      ),
+                      // phone
+                      AppTextField(
+                          keyboardType: TextInputType.number,
+                          textController: ageController,
+                          hintText: "Age",
+                          icon: Icons.calendar_today),
                       SizedBox(
                         height: Dimensions.height20,
                       ),
@@ -160,7 +176,7 @@ class SignUpPage extends StatelessWidget {
                         height: Dimensions.screenHeight * 0.05,
                       ),
                       // sign up options
-                      RichText(
+                      /*RichText(
                           text: TextSpan(
                               text: "Sig up using the following methods",
                               style: TextStyle(
@@ -177,7 +193,7 @@ class SignUpPage extends StatelessWidget {
                                         "assets/image/" + signUpImages[index]),
                                   ),
                                 )),
-                      )
+                      )*/
                     ],
                   ),
                 )

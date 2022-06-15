@@ -5,41 +5,43 @@ import 'package:get/get.dart';
 
 class AuthController extends GetxController implements GetxService {
   final AuthRepo authRepo;
-  AuthController ({
-    required this.authRepo
-  });
 
-  bool _isLoading= false;
-  bool  get isLoading => _isLoading;
+  AuthController({required this.authRepo});
 
-  Future<ResponseModel> registration (SignUpBody signUpBody) async {
+  bool _isLoading = false;
+
+  bool get isLoading => _isLoading;
+
+  Future<ResponseModel> registration(SignUpBody signUpBody) async {
     _isLoading = true;
     update();
-    Response response =  await authRepo.registration(signUpBody);
+    Response response = await authRepo.registration(signUpBody);
     ResponseModel responseModel;
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       authRepo.saveUserToken(response.body["token"]);
       responseModel = ResponseModel(true, response.body["token"]);
     } else {
+
       print("else in auth controller" + response.statusCode.toString());
       print(response.statusCode);
       responseModel = ResponseModel(false, response.statusText!);
 
+
     }
-    _isLoading= false;
+    _isLoading = false;
     update();
     return responseModel;
   }
 
-  Future<ResponseModel> login (String email, String password) async {
+  Future<ResponseModel> login(String email, String password) async {
     //print("Getting token");
     //print(authRepo.getUserToken().toString());
     //authRepo.getUserToken();
     _isLoading = true;
     update();
-    Response response =  await authRepo.login(email, password);
+    Response response = await authRepo.login(email, password);
     ResponseModel responseModel;
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       //print("Backend token ");
 
       authRepo.saveUserToken(response.body["token"]);
@@ -52,7 +54,7 @@ class AuthController extends GetxController implements GetxService {
       //print(response.statusCode);
       responseModel = ResponseModel(false, response.statusText!);
     }
-    _isLoading= false;
+    _isLoading = false;
     update();
     return responseModel;
   }
@@ -61,13 +63,15 @@ class AuthController extends GetxController implements GetxService {
     authRepo.saveUserNumberAndPassword(number, password);
   }
 
-
   bool userLoggedIn() {
     return authRepo.userLoggedIn();
   }
 
-  bool clearSharedData(){
+  bool clearSharedData() {
     return authRepo.clearSharedData();
   }
 
+  Future <Response> deleteAccount(String email) async {
+    return await authRepo.deleteAccount(email);
+  }
 }

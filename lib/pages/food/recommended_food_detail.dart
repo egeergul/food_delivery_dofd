@@ -185,23 +185,9 @@ class RecommendedFoodDetail extends StatelessWidget {
                     topRight: Radius.circular(Dimensions.radius20 * 2),
                   )),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    padding: EdgeInsets.only(
-                        top: Dimensions.height20,
-                        bottom: Dimensions.height20,
-                        right: Dimensions.width20,
-                        left: Dimensions.width20),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimensions.radius20),
-                      color: Colors.white,
-                    ),
-                    child: Icon(
-                      Icons.favorite,
-                      color: AppColors.mainColor,
-                    ),
-                  ),
+
                   GestureDetector(
                     onTap: () {
                       controller.addItem(product);

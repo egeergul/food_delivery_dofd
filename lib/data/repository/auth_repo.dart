@@ -45,6 +45,10 @@ class AuthRepo {
     }
   }
 
+  Future<Response> deleteAccount(String email) async{
+    return await apiClient.deleteData(AppConstants.DELETE_ACCOUNT + "/${email}"  );
+  }
+
   bool clearSharedData(){
     sharedPreferences.remove(AppConstants.TOKEN);
     sharedPreferences.remove(AppConstants.PASSWORD);
@@ -55,6 +59,7 @@ class AuthRepo {
     apiClient.updateHeader('');
     return true;
   }
+
 
 
 }

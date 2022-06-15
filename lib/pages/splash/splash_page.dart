@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:get/get.dart';
+import '../../controllers/auth_controller.dart';
 import '../../controllers/popular _product_controller.dart';
 import '../../controllers/recommended_food_controller.dart';
 import '../../routes/route_helper.dart';
@@ -36,25 +37,32 @@ class _SplashScreenState extends State<SplashScreen>
     animation = new CurvedAnimation(parent: controller, curve: Curves.linear);
 
     Timer(const Duration(seconds: 3),
-        () => Get.offNamed(RouteHelper.getInitial()));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.mainBackgroundColor,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ScaleTransition(
-              scale: animation,
-              child: Center(
-                  child: Image.asset(
-                "assets/image/logo_pink.jpg",
-                width: Dimensions.splashImage,
-              ))),
-        ],
-      ),
-    );
-  }
+    ()
+    {
+      if (Get.find<AuthController>().userLoggedIn()) {
+        Get.offNamed(RouteHelper.getInitial());
+      } else {
+        Get.toNamed(RouteHelper.getSignInPage());
+      }
+    }
+  );
 }
+
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    backgroundColor: AppColors.mainBackgroundColor,
+    body: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ScaleTransition(
+            scale: animation,
+            child: Center(
+                child: Image.asset(
+                  "assets/image/logo_pink.jpg",
+                  width: Dimensions.splashImage,
+                ))),
+      ],
+    ),
+  );
+}}

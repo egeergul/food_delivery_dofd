@@ -192,26 +192,6 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                         SizedBox(
                                           height: Dimensions.height10,
                                         ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            IconAndTextWidget(
-                                                icon: Icons.circle_sharp,
-                                                text: "Normal",
-                                                iconColor:
-                                                    AppColors.iconColor1),
-                                            IconAndTextWidget(
-                                                icon: Icons.location_on,
-                                                text: "1.7 km",
-                                                iconColor: AppColors.mainColor),
-                                            IconAndTextWidget(
-                                                icon: Icons.access_time_rounded,
-                                                text: "32 min",
-                                                iconColor:
-                                                    AppColors.iconColor2),
-                                          ],
-                                        ),
                                       ],
                                     ),
                                   )),
@@ -269,7 +249,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   left: Dimensions.width10, right: Dimensions.width10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimensions.radius30),
-                color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
+                color: index.isEven ?  AppColors.yellowColor : Color(0xFF9294cc),
                 image: DecorationImage(
                     fit: BoxFit.cover,
                     //image: AssetImage("assets/image/" + popularProduct.img!  ),
@@ -285,6 +265,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
+
               height: Dimensions.pageViewTextController,
               margin: EdgeInsets.only(
                   left: Dimensions.width30,
@@ -292,8 +273,14 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   bottom: Dimensions.height30),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.radius20),
+                  //color: AppColors.yellowColor,
                   color: Colors.white,
                   boxShadow: [
+                    BoxShadow(
+                      color: Color(0xFFe8e8e8),
+                      blurRadius: 5.0,
+                      offset: Offset(0, -3),
+                    ),
                     BoxShadow(
                       color: Color(0xFFe8e8e8),
                       blurRadius: 5.0,
@@ -309,11 +296,12 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     ),
                   ]),
               child: Container(
+
                 padding: EdgeInsets.only(
                     top: Dimensions.height15,
                     left: Dimensions.width15,
                     right: Dimensions.width15),
-                child: AppColumn(text: popularProduct.name!),
+                child: AppColumn(text: popularProduct.name!, rating: popularProduct.stars!),
               ),
             ),
           )
