@@ -21,10 +21,10 @@ class AuthController extends GetxController implements GetxService {
       authRepo.saveUserToken(response.body["token"]);
       responseModel = ResponseModel(true, response.body["token"]);
     } else {
-
-      print("else in auth controller" + response.statusCode.toString());
-      print(response.statusCode);
-      responseModel = ResponseModel(false, response.statusText!);
+      String error = response.body['errors'][0]['message'] == null
+          ? "Something went wrong! Please make sure your credentials are correct and try again"
+          : response.body['errors'][0]['message'];
+      responseModel = ResponseModel(false, error);
 
 
     }
@@ -33,25 +33,22 @@ class AuthController extends GetxController implements GetxService {
     return responseModel;
   }
 
+
+
+
   Future<ResponseModel> login(String email, String password) async {
-    //print("Getting token");
-    //print(authRepo.getUserToken().toString());
-    //authRepo.getUserToken();
+
     _isLoading = true;
     update();
     Response response = await authRepo.login(email, password);
     ResponseModel responseModel;
     if (response.statusCode == 200) {
-      //print("Backend token ");
 
       authRepo.saveUserToken(response.body["token"]);
       print("My token is " + response.body["token"]);
 
-      //print(response.body["token"].toString());
       responseModel = ResponseModel(true, response.body["token"]);
     } else {
-      //print("BACKENDDEN RESPONSE GELMEDI");
-      //print(response.statusCode);
       responseModel = ResponseModel(false, response.statusText!);
     }
     _isLoading = false;
