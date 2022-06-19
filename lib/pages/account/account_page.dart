@@ -66,13 +66,13 @@ class AccountPage extends StatelessWidget {
                       child: Column(
                         children: [
                           // profile
-                          AppIcon(
+                         /* AppIcon(
                             icon: Icons.person,
                             backgroundColor: AppColors.mainColor,
                             iconColor: Colors.white,
                             size: Dimensions.height15 * 10,
                             iconSize: Dimensions.height15 * 5,
-                          ),
+                          ),*/
                           SizedBox(
                             height: Dimensions.height30,
                           ),

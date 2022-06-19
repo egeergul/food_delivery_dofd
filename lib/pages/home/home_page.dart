@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   List pages =[
     MainFoodPage(),
-    OrderPage(),
+    //OrderPage(),
     //SignInPage(),
     CartHistory(),
     AccountPage( ),
@@ -50,10 +50,10 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(Icons.home_outlined,),
               label: "home",
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.archive,),
-            label: "history",
-          ),
+          //BottomNavigationBarItem(
+           // icon: Icon(Icons.archive,),
+            //label: "history",
+          //),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart,),
             label: "cart",

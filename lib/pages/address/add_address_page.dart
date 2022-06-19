@@ -131,7 +131,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
                     ],
                   ),
                 ),
-                Padding(
+                /*Padding(
                   padding: EdgeInsets.only(
                       left: Dimensions.width20, top: Dimensions.height20),
                   child: SizedBox(
@@ -176,7 +176,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
                           );
                         }),
                   ),
-                ),
+                ),*/
                 SizedBox(
                   height: Dimensions.height20,
                 ),
