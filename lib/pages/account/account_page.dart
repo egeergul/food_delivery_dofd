@@ -243,7 +243,8 @@ class AccountPage extends StatelessWidget {
                                                 TextButton(
                                                     child: Text('Yes'),
                                                     onPressed: () {
-                                                      _deleteAccount(userController.userModel!.email.toString());
+                                                      _deleteAccount(userController.userModel!.id.toString());
+                                                      print("DELETED ACCOUNT ID IS " + userController.userModel!.id.toString());
 
                                                     }),
                                                 TextButton(

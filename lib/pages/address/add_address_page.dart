@@ -84,7 +84,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
           }
         }
         return GetBuilder<LocationController>(builder: (locationController) {
-          _addressController.text = '${locationController.placemark.name ?? ''}'
+          _addressController.text = '${locationController.placemark.name ?? 'Empty Address'}'
               '${locationController.placemark.locality ?? ''}'
               '${locationController.placemark.postalCode ?? ''}'
               '${locationController.placemark.country ?? ''}';
