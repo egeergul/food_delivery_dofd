@@ -30,7 +30,6 @@ class AccountPage extends StatelessWidget {
     _deleteAccount(String email){
       if (Get.find<AuthController>()
           .userLoggedIn()) {
-
         Get.find<AuthController>()
             .clearSharedData();
 
@@ -39,7 +38,6 @@ class AccountPage extends StatelessWidget {
         Get.find<CartController>()
             .clearCartHistory();
         Get.find<LocationController>().clearAddressList();
-
         Get.offNamed(RouteHelper.getSignInPage());
       } else {
         Get.offNamed(
@@ -198,18 +196,17 @@ class AccountPage extends StatelessWidget {
                                           .userLoggedIn()) {
                                         Get.find<AuthController>()
                                             .clearSharedData();
-                                        Get.find<CartController>().clear();
-                                        Get.find<CartController>()
-                                            .clearCartHistory();
+                                        //Get.find<CartController>().clear();
+                                        //Get.find<CartController>()
+                                          //  .clearCartHistory();
                                         Get.find<LocationController>().clearAddressList();
-                                        print("inside if");
 
                                         Get.offNamed(
                                             RouteHelper.getSignInPage());
                                       } else {
                                         Get.offNamed(
                                             RouteHelper.getSignInPage());
-                                        print("you logged out");
+                                        print("Logged out");
                                       }
                                     },
                                     child: AccountWidget(
@@ -244,7 +241,6 @@ class AccountPage extends StatelessWidget {
                                                     child: Text('Yes'),
                                                     onPressed: () {
                                                       _deleteAccount(userController.userModel!.id.toString());
-                                                      print("DELETED ACCOUNT ID IS " + userController.userModel!.id.toString());
 
                                                     }),
                                                 TextButton(
