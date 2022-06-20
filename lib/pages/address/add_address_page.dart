@@ -25,8 +25,8 @@ class AddAddressPage extends StatefulWidget {
 
 class _AddAddressPageState extends State<AddAddressPage> {
   TextEditingController _addressController = TextEditingController();
-  final TextEditingController _contactPersonName = TextEditingController();
-  final TextEditingController _contactPersonNumber = TextEditingController();
+  TextEditingController _contactPersonName = TextEditingController();
+  TextEditingController _contactPersonNumber = TextEditingController();
   late bool _isLogged;
   CameraPosition _cameraPosition =
       const CameraPosition(target: LatLng(45.51563, -122.677433), zoom: 17);
@@ -89,6 +89,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
               '${locationController.placemark.postalCode ?? ''}'
               '${locationController.placemark.country ?? ''}';
           print("address in my view is " + _addressController.text);
+
           return SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

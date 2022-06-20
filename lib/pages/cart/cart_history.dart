@@ -171,7 +171,7 @@ class CartHistory extends StatelessWidget {
                                             BigText(text: itemsPerOrder[i]
                                                 .toString() + " Items",
                                               color: AppColors.titleColor,),
-                                            /*GestureDetector(
+                                            GestureDetector(
                                               onTap: () {
                                                 var orderTime = cartOrderTimeToList();
                                                 Map<int,
@@ -218,7 +218,7 @@ class CartHistory extends StatelessWidget {
                                                   text: "one more ",
                                                   color: AppColors.mainColor,),
                                               ),
-                                            )*/
+                                            )
                                           ],
                                         ),
                                       )

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/mail/mail_helper.dart';
 import 'package:food_delivery/models/order_model.dart';
 import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/app_constants.dart';
@@ -108,6 +109,9 @@ class _PaymentPageState extends State<PaymentPage> {
         _canRedirect = false;
       }
       if (_isSuccess) {
+        MailHelper mailHelper = MailHelper();
+        print("PAYMENT PAGE ORDER MODEL " + widget.orderModel.deliveryAddress.toString());
+        mailHelper.sendGmail(widget.orderModel);
         Get.offNamed(RouteHelper.getOrderSuccessPage(widget.orderModel.id.toString(), 'success'));
       } else if (_isFailed || _isCancel) {
         Get.offNamed(RouteHelper.getOrderSuccessPage(widget.orderModel.id.toString(), 'fail'));

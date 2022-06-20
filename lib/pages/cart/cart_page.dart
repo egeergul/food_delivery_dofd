@@ -312,10 +312,7 @@ class CartPage extends StatelessWidget {
                                     .toString());
                             Get.toNamed(RouteHelper.getAddressPage());
                           } else {
-                            print("HERARSDADASDSAAAAAAAAAAAAAAAAAAA");
-                            //Get.offNamed(RouteHelper.getInitial());
-                            //Get.offNamed(RouteHelper.getPaymentPage("111111", Get.find<UserController>().userModel!.id!)); //USE THIS ONE
-                            //Get.offNamed(RouteHelper.getPaymentPage("100001", 35);// hardcoded
+
                             var location =
                                 Get.find<LocationController>().getUserAddress();
                             var cart = Get.find<CartController>().getItems;
@@ -336,7 +333,6 @@ class CartPage extends StatelessWidget {
                             placeOrder,
                             _callback);
                           }
-                          print("tapped");
                         } else {
                           Get.toNamed(RouteHelper.getSignInPage());
                         }
