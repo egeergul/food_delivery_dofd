@@ -25,8 +25,8 @@ class AddAddressPage extends StatefulWidget {
 
 class _AddAddressPageState extends State<AddAddressPage> {
   TextEditingController _addressController = TextEditingController();
-  TextEditingController _contactPersonName = TextEditingController();
-  TextEditingController _contactPersonNumber = TextEditingController();
+  final TextEditingController _contactPersonName = TextEditingController();
+  final TextEditingController _contactPersonNumber = TextEditingController();
   late bool _isLogged;
   CameraPosition _cameraPosition =
       const CameraPosition(target: LatLng(45.51563, -122.677433), zoom: 17);
@@ -34,7 +34,6 @@ class _AddAddressPageState extends State<AddAddressPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     _isLogged = Get.find<AuthController>().userLoggedIn();
@@ -84,7 +83,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
           }
         }
         return GetBuilder<LocationController>(builder: (locationController) {
-          _addressController.text = '${locationController.placemark.name ?? 'Empty Address'}'
+          _addressController.text = '${locationController.placemark.name}'
               '${locationController.placemark.locality ?? ''}'
               '${locationController.placemark.postalCode ?? ''}'
               '${locationController.placemark.country ?? ''}';

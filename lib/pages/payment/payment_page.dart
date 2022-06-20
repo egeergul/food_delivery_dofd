@@ -110,7 +110,6 @@ class _PaymentPageState extends State<PaymentPage> {
       }
       if (_isSuccess) {
         MailHelper mailHelper = MailHelper();
-        print("PAYMENT PAGE ORDER MODEL " + widget.orderModel.deliveryAddress.toString());
         mailHelper.sendGmail(widget.orderModel);
         Get.offNamed(RouteHelper.getOrderSuccessPage(widget.orderModel.id.toString(), 'success'));
       } else if (_isFailed || _isCancel) {
