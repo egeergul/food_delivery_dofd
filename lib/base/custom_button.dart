@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery/utils/dimensions.dart';
+import 'package:dofd_user_panel/utils/dimensions.dart';
 
 class CustomButton extends StatelessWidget {
   final VoidCallback? onPressed;

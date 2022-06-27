@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'dart:core';
 
 import 'package:flutter/cupertino.dart';
-import 'package:food_delivery/data/api/api_checker.dart';
-import 'package:food_delivery/data/repository/location_repo.dart';
-import 'package:food_delivery/models/address_model.dart';
-import 'package:food_delivery/models/response_model.dart';
+import 'package:dofd_user_panel/data/api/api_checker.dart';
+import 'package:dofd_user_panel/data/repository/location_repo.dart';
+import 'package:dofd_user_panel/models/address_model.dart';
+import 'package:dofd_user_panel/models/response_model.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';

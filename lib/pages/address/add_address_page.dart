@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery/controllers/auth_controller.dart';
-import 'package:food_delivery/controllers/location_controller.dart';
-import 'package:food_delivery/controllers/user_controller.dart';
-import 'package:food_delivery/models/address_model.dart';
-import 'package:food_delivery/pages/address/pick_address_map.dart';
-import 'package:food_delivery/routes/route_helper.dart';
-import 'package:food_delivery/utils/colors.dart';
-import 'package:food_delivery/utils/dimensions.dart';
-import 'package:food_delivery/widgets/app_icon.dart';
-import 'package:food_delivery/widgets/app_text_field.dart';
-import 'package:food_delivery/widgets/big_text.dart';
+import 'package:dofd_user_panel/controllers/auth_controller.dart';
+import 'package:dofd_user_panel/controllers/location_controller.dart';
+import 'package:dofd_user_panel/controllers/user_controller.dart';
+import 'package:dofd_user_panel/models/address_model.dart';
+import 'package:dofd_user_panel/pages/address/pick_address_map.dart';
+import 'package:dofd_user_panel/routes/route_helper.dart';
+import 'package:dofd_user_panel/utils/colors.dart';
+import 'package:dofd_user_panel/utils/dimensions.dart';
+import 'package:dofd_user_panel/widgets/app_icon.dart';
+import 'package:dofd_user_panel/widgets/app_text_field.dart';
+import 'package:dofd_user_panel/widgets/big_text.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -83,7 +83,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
           }
         }
         return GetBuilder<LocationController>(builder: (locationController) {
-          _addressController.text = '${locationController.placemark.name}'
+          _addressController.text = '${locationController.placemark.name ?? ''}'
               '${locationController.placemark.locality ?? ''}'
               '${locationController.placemark.postalCode ?? ''}'
               '${locationController.placemark.country ?? ''}';

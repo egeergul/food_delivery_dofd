@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/utils/dimensions.dart';
-import 'package:food_delivery/widgets/small_text.dart';
-import 'package:food_delivery/utils/colors.dart';
-import 'package:food_delivery/widgets/big_text.dart';
+import 'package:dofd_user_panel/utils/dimensions.dart';
+import 'package:dofd_user_panel/widgets/small_text.dart';
+import 'package:dofd_user_panel/utils/colors.dart';
+import 'package:dofd_user_panel/widgets/big_text.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 

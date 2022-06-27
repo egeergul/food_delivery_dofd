@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery/utils/colors.dart';
-import 'package:food_delivery/utils/dimensions.dart';
+import 'package:dofd_user_panel/utils/colors.dart';
+import 'package:dofd_user_panel/utils/dimensions.dart';
 import 'package:get/get.dart';
 import '../../controllers/auth_controller.dart';
 import '../../controllers/popular _product_controller.dart';

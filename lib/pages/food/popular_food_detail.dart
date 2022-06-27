@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery/controllers/cart_controller.dart';
-import 'package:food_delivery/controllers/popular%20_product_controller.dart';
-import 'package:food_delivery/pages/cart/cart_page.dart';
-import 'package:food_delivery/utils/app_constants.dart';
-import 'package:food_delivery/utils/dimensions.dart';
-import 'package:food_delivery/widgets/app_column.dart';
-import 'package:food_delivery/widgets/app_icon.dart';
-import 'package:food_delivery/widgets/expandable_text_widget.dart';
+import 'package:dofd_user_panel/controllers/cart_controller.dart';
+import 'package:dofd_user_panel/controllers/popular%20_product_controller.dart';
+import 'package:dofd_user_panel/pages/cart/cart_page.dart';
+import 'package:dofd_user_panel/utils/app_constants.dart';
+import 'package:dofd_user_panel/utils/dimensions.dart';
+import 'package:dofd_user_panel/widgets/app_column.dart';
+import 'package:dofd_user_panel/widgets/app_icon.dart';
+import 'package:dofd_user_panel/widgets/expandable_text_widget.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 

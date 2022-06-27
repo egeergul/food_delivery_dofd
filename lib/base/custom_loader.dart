@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery/controllers/auth_controller.dart';
-import 'package:food_delivery/utils/colors.dart';
-import 'package:food_delivery/utils/dimensions.dart';
+import 'package:dofd_user_panel/controllers/auth_controller.dart';
+import 'package:dofd_user_panel/utils/colors.dart';
+import 'package:dofd_user_panel/utils/dimensions.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 

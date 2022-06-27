@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/controllers/cart_controller.dart';
-import 'package:food_delivery/data/repository/popular_product_repo.dart';
-import 'package:food_delivery/models/cart_model.dart';
-import 'package:food_delivery/utils/colors.dart';
+import 'package:dofd_user_panel/controllers/cart_controller.dart';
+import 'package:dofd_user_panel/data/repository/popular_product_repo.dart';
+import 'package:dofd_user_panel/models/cart_model.dart';
+import 'package:dofd_user_panel/utils/colors.dart';
 import 'package:get/get.dart';
 
 import '../models/products_model.dart';

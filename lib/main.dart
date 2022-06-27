@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/controllers/cart_controller.dart';
-import 'package:food_delivery/controllers/popular%20_product_controller.dart';
-
-import 'package:food_delivery/pages/auth/sign_up_page.dart';
-import 'package:food_delivery/pages/auth/sing_in_page.dart';
-import 'package:food_delivery/pages/cart/cart_page.dart';
-import 'package:food_delivery/pages/home/food_page_body.dart';
-import 'package:food_delivery/pages/home/main_food_page.dart';
-import 'package:food_delivery/pages/order/orders_page.dart';
-import 'package:food_delivery/pages/splash/splash_page.dart';
-import 'package:food_delivery/routes/route_helper.dart';
-import 'package:food_delivery/utils/colors.dart';
+import 'package:dofd_user_panel/controllers/cart_controller.dart';
+import 'package:dofd_user_panel/controllers/popular%20_product_controller.dart';
+import 'package:dofd_user_panel/pages/splash/splash_page.dart';
+import 'package:dofd_user_panel/routes/route_helper.dart';
+import 'package:dofd_user_panel/utils/colors.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'controllers/recommended_food_controller.dart';

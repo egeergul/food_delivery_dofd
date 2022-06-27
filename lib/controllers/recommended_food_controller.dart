@@ -1,4 +1,4 @@
-import 'package:food_delivery/utils/app_constants.dart';
+import 'package:dofd_user_panel/utils/app_constants.dart';
 import 'package:get/get.dart';
 import '../data/repository/recommended_food_repo.dart';
 import '../models/products_model.dart';

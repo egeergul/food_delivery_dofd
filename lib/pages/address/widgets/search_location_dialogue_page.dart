@@ -3,8 +3,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
-import 'package:food_delivery/controllers/location_controller.dart';
-import 'package:food_delivery/utils/dimensions.dart';
+import 'package:dofd_user_panel/controllers/location_controller.dart';
+import 'package:dofd_user_panel/utils/dimensions.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';

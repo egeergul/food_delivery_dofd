@@ -1,6 +1,6 @@
-import 'package:food_delivery/data/api/api_client.dart';
-import 'package:food_delivery/models/signup_body_model.dart';
-import 'package:food_delivery/utils/app_constants.dart';
+import 'package:dofd_user_panel/data/api/api_client.dart';
+import 'package:dofd_user_panel/models/signup_body_model.dart';
+import 'package:dofd_user_panel/utils/app_constants.dart';
 import 'package:get/get_connect.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

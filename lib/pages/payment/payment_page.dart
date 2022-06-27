@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery/mail/mail_helper.dart';
-import 'package:food_delivery/models/order_model.dart';
-import 'package:food_delivery/routes/route_helper.dart';
-import 'package:food_delivery/utils/app_constants.dart';
-import 'package:food_delivery/utils/colors.dart';
-import 'package:food_delivery/utils/dimensions.dart';
+import 'package:dofd_user_panel/mail/mail_helper.dart';
+import 'package:dofd_user_panel/models/order_model.dart';
+import 'package:dofd_user_panel/routes/route_helper.dart';
+import 'package:dofd_user_panel/utils/app_constants.dart';
+import 'package:dofd_user_panel/utils/colors.dart';
+import 'package:dofd_user_panel/utils/dimensions.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:webview_flutter/webview_flutter.dart';

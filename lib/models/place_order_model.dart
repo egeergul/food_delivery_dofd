@@ -1,4 +1,4 @@
-import 'package:food_delivery/models/cart_model.dart';
+import 'package:dofd_user_panel/models/cart_model.dart';
 
 class PlaceOrderBody {
   List<CartModel>? _cart;

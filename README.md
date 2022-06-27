@@ -1,4 +1,4 @@
-# food_delivery
+# dofd_user_panel
 
 Clone of food delivery app.
 

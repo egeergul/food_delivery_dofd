@@ -1,4 +1,4 @@
- import 'package:food_delivery/models/products_model.dart';
+ import 'package:dofd_user_panel/models/products_model.dart';
 
 class CartModel {
   int? id;

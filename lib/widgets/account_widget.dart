@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery/utils/dimensions.dart';
-import 'package:food_delivery/widgets/app_icon.dart';
-import 'package:food_delivery/widgets/big_text.dart';
+import 'package:dofd_user_panel/utils/dimensions.dart';
+import 'package:dofd_user_panel/widgets/app_icon.dart';
+import 'package:dofd_user_panel/widgets/big_text.dart';
 
 class AccountWidget extends StatelessWidget {
   AppIcon appIcon;

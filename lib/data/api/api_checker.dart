@@ -1,5 +1,5 @@
-import 'package:food_delivery/base/show_custom_snackbar.dart';
-import 'package:food_delivery/routes/route_helper.dart';
+import 'package:dofd_user_panel/base/show_custom_snackbar.dart';
+import 'package:dofd_user_panel/routes/route_helper.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:get/get.dart';
 

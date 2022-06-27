@@ -1,18 +1,18 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery/controllers/popular%20_product_controller.dart';
-import 'package:food_delivery/controllers/recommended_food_controller.dart';
-import 'package:food_delivery/models/products_model.dart';
-import 'package:food_delivery/pages/food/popular_food_detail.dart';
-import 'package:food_delivery/routes/route_helper.dart';
-import 'package:food_delivery/utils/app_constants.dart';
-import 'package:food_delivery/utils/colors.dart';
-import 'package:food_delivery/utils/dimensions.dart';
-import 'package:food_delivery/widgets/app_column.dart';
-import 'package:food_delivery/widgets/big_text.dart';
-import 'package:food_delivery/widgets/icon_and_text_widget.dart';
-import 'package:food_delivery/widgets/small_text.dart';
+import 'package:dofd_user_panel/controllers/popular%20_product_controller.dart';
+import 'package:dofd_user_panel/controllers/recommended_food_controller.dart';
+import 'package:dofd_user_panel/models/products_model.dart';
+import 'package:dofd_user_panel/pages/food/popular_food_detail.dart';
+import 'package:dofd_user_panel/routes/route_helper.dart';
+import 'package:dofd_user_panel/utils/app_constants.dart';
+import 'package:dofd_user_panel/utils/colors.dart';
+import 'package:dofd_user_panel/utils/dimensions.dart';
+import 'package:dofd_user_panel/widgets/app_column.dart';
+import 'package:dofd_user_panel/widgets/big_text.dart';
+import 'package:dofd_user_panel/widgets/icon_and_text_widget.dart';
+import 'package:dofd_user_panel/widgets/small_text.dart';
 import 'package:get/get.dart';
 
 class FoodPageBody extends StatefulWidget {

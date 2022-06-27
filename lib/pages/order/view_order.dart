@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery/controllers/order_controller.dart';
-import 'package:food_delivery/models/order_model.dart';
-import 'package:food_delivery/utils/colors.dart';
-import 'package:food_delivery/utils/dimensions.dart';
+import 'package:dofd_user_panel/controllers/order_controller.dart';
+import 'package:dofd_user_panel/models/order_model.dart';
+import 'package:dofd_user_panel/utils/colors.dart';
+import 'package:dofd_user_panel/utils/dimensions.dart';
 import 'package:get/get.dart';
 
 class ViewOrder extends StatelessWidget {

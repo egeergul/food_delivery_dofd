@@ -1,9 +1,9 @@
 
 
 
-import 'package:food_delivery/data/repository/user_repo.dart';
-import 'package:food_delivery/models/response_model.dart';
-import 'package:food_delivery/models/user_model.dart';
+import 'package:dofd_user_panel/data/repository/user_repo.dart';
+import 'package:dofd_user_panel/models/response_model.dart';
+import 'package:dofd_user_panel/models/user_model.dart';
 import 'package:get/get.dart';
 
 class UserController extends GetxController implements GetxService {
