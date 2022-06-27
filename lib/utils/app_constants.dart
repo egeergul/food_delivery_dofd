@@ -18,9 +18,9 @@ class AppConstants {
    */
   static const String PLACE_ORDER_URI = '/api/v1/customer/order/place';
   static const String ORDER_LIST_URI =
-      "/api/v1/customer/order/list"; // EGE BORANINKI ADAM DA AYNISINI OLUŞTURDU
+      "/api/v1/customer/order/list";
   static const String ALL_ORDERS_LIST_URI =
-      "/api/v1/customer/order/get-all-orders"; //EGE BORANINKI
+      "/api/v1/customer/order/get-all-orders";
 
   //new
   static const String USER_ADDRESS = "user_address";
