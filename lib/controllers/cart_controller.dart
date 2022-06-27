@@ -12,14 +12,15 @@ class CartController extends GetxController {
   CartController({required this.cartRepo});
 
   Map<int, CartModel> _items = {};
-  Map<int, CartModel> get items  =>  _items ;
+
+  Map<int, CartModel> get items => _items;
   List<CartModel> storageItems = [];
 
   void addItem(ProductModel product, int quantity) {
-    var totalQuantity=0;
-    if(_items.containsKey(product.id!)){
+    var totalQuantity = 0;
+    if (_items.containsKey(product.id!)) {
       _items.update(product.id!, (value) {
-        totalQuantity=value.quantity! + quantity;
+        totalQuantity = value.quantity! + quantity;
         return CartModel(
           id: value.id,
           name: product.name,
@@ -28,14 +29,14 @@ class CartController extends GetxController {
           quantity: value.quantity! + quantity,
           isExist: true,
           time: DateTime.now().toString(),
-          product: product ,
+          product: product,
         );
       });
-        if(totalQuantity<=0){
-          _items.remove(product.id);
-        }
+      if (totalQuantity <= 0) {
+        _items.remove(product.id);
+      }
     } else {
-      if(quantity > 0) {
+      if (quantity > 0) {
         _items.putIfAbsent(product.id!, () {
           return CartModel(
             id: product.id,
@@ -45,36 +46,21 @@ class CartController extends GetxController {
             quantity: quantity,
             isExist: true,
             time: DateTime.now().toString(),
-            product: product ,
+            product: product,
           );
         });
       } else {
-        Get.snackbar("Item count", "You should at least add an item to the cart",
-            backgroundColor: AppColors.mainColor,
-            colorText: Colors.white);
+        Get.snackbar(
+            "Item count", "You should at least add an item to the cart",
+            backgroundColor: AppColors.mainColor, colorText: Colors.white);
       }
     }
     cartRepo.addToCartList(getItems);
     update();
-
-    /*if (quantity > 0) {
-      _items.putIfAbsent(product.id!, () {
-        return CartModel(
-          id: product.id,
-          name: product.name,
-          img: product.img,
-          price: product.price,
-
-          quantity: quantity,
-          isExist: true,
-          time: DateTime.now().toString(),
-        );
-      });
-    }*/
   }
 
   bool existsInCart(ProductModel product) {
-    if(_items.containsKey(product.id)){
+    if (_items.containsKey(product.id)) {
       return true;
     }
     return false;
@@ -82,23 +68,22 @@ class CartController extends GetxController {
 
   int getQuantity(ProductModel product) {
     var quantity = 0;
-    if(_items.containsKey(product.id)){
+    if (_items.containsKey(product.id)) {
       _items.forEach((key, value) {
-        if(key== product.id) {
-          quantity= value.quantity!;
+        if (key == product.id) {
+          quantity = value.quantity!;
         }
       });
     }
     return quantity;
   }
 
-  int get totalItems{
+  int get totalItems {
     var totalQuantity = 0;
     _items.forEach((key, value) {
-      totalQuantity +=value.quantity!;
+      totalQuantity += value.quantity!;
     });
     return totalQuantity;
-
   }
 
   int get totalAmount {
@@ -109,57 +94,54 @@ class CartController extends GetxController {
     return total;
   }
 
-  List<CartModel> getCartData(){
+  List<CartModel> getCartData() {
     setCart = cartRepo.getCartList();
     return storageItems;
   }
 
-  set setCart(List<CartModel> items){
+  set setCart(List<CartModel> items) {
     storageItems = items;
-    print("Length is " + storageItems.length.toString());
-    for(int i = 0; i < storageItems.length; i++){
+    for (int i = 0; i < storageItems.length; i++) {
       _items.putIfAbsent(storageItems[i].product!.id!, () => storageItems[i]);
     }
   }
-  List<CartModel> get  getItems{
-    return _items.entries.map((e){
-      print("PRICE" + e.value.price.toString());
+
+  List<CartModel> get getItems {
+    return _items.entries.map((e) {
       return e.value;
     }).toList();
   }
 
-
-
-  void addToHistory(){
+  void addToHistory() {
     cartRepo.addToCartHistoryList();
     clear();
   }
 
-  void clear(){
+  void clear() {
     _items = {};
     update();
   }
 
-  List<CartModel> getCartHistoryList(){
+  List<CartModel> getCartHistoryList() {
     return cartRepo.getCartHistory();
   }
 
-  set setItems(Map<int, CartModel> setItems){
+  set setItems(Map<int, CartModel> setItems) {
     _items = {};
     _items = setItems;
   }
 
-  void addToCartList(){
+  void addToCartList() {
     cartRepo.addToCartList(getItems);
     update();
   }
 
-  void clearCartHistory(){
+  void clearCartHistory() {
     cartRepo.clearCartHistory();
     update();
   }
 
-  void removeCartSharedPreference(){
+  void removeCartSharedPreference() {
     cartRepo.removeCartSharedPreference();
   }
 }

@@ -12,9 +12,9 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-
 class PaymentPage extends StatefulWidget {
   final OrderModel orderModel;
+
   PaymentPage({required this.orderModel});
 
   @override
@@ -26,15 +26,15 @@ class _PaymentPageState extends State<PaymentPage> {
   double value = 0.0;
   bool _canRedirect = true;
   bool _isLoading = true;
-  final Completer<WebViewController> _controller = Completer<WebViewController>();
+  final Completer<WebViewController> _controller =
+      Completer<WebViewController>();
   late WebViewController controllerGlobal;
 
   @override
   void initState() {
     super.initState();
-    selectedUrl = '${AppConstants.BASE_URL}/payment-mobile?customer_id=${widget.orderModel.userId}&order_id=${widget.orderModel.id}';
-    //selectedUrl="https://mvs.bslmeiyu.com";
-    // if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
+    selectedUrl =
+        '${AppConstants.BASE_URL}/payment-mobile?customer_id=${widget.orderModel.userId}&order_id=${widget.orderModel.id}';
   }
 
   @override
@@ -47,7 +47,7 @@ class _PaymentPageState extends State<PaymentPage> {
           title: const Text("Payment"),
           leading: IconButton(
             icon: Icon(Icons.arrow_back_ios),
-            onPressed:()=> _exitApp(context),
+            onPressed: () => _exitApp(context),
           ),
           backgroundColor: AppColors.mainColor,
         ),
@@ -60,12 +60,12 @@ class _PaymentPageState extends State<PaymentPage> {
                   javascriptMode: JavascriptMode.unrestricted,
                   initialUrl: selectedUrl,
                   gestureNavigationEnabled: true,
-
-                  userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_3 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13E233 Safari/601.1',
+                  userAgent:
+                      'Mozilla/5.0 (iPhone; CPU iPhone OS 9_3 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13E233 Safari/601.1',
                   onWebViewCreated: (WebViewController webViewController) {
-                    _controller.future.then((value) => controllerGlobal = value);
+                    _controller.future
+                        .then((value) => controllerGlobal = value);
                     _controller.complete(webViewController);
-                    //_controller.future.catchError(onError)
                   },
                   onProgress: (int progress) {
                     print("WebView is loading (progress : $progress%)");
@@ -75,9 +75,8 @@ class _PaymentPageState extends State<PaymentPage> {
                     setState(() {
                       _isLoading = true;
                     });
-                    print("printing urls "+url.toString());
+                    print("printing urls " + url.toString());
                     _redirect(url);
-
                   },
                   onPageFinished: (String url) {
                     print('Page finished loading: $url');
@@ -85,12 +84,15 @@ class _PaymentPageState extends State<PaymentPage> {
                       _isLoading = false;
                     });
                     _redirect(url);
-
                   },
                 ),
-                _isLoading ? Center(
-                  child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor)),
-                ) : SizedBox.shrink(),
+                _isLoading
+                    ? Center(
+                        child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                                Theme.of(context).primaryColor)),
+                      )
+                    : SizedBox.shrink(),
               ],
             ),
           ),
@@ -101,21 +103,31 @@ class _PaymentPageState extends State<PaymentPage> {
 
   void _redirect(String url) {
     print("redirect");
-    if(_canRedirect) {
-      bool _isSuccess = url.contains('success') && url.contains(AppConstants.BASE_URL);
-      bool _isFailed = url.contains('fail') && url.contains(AppConstants.BASE_URL);
-      bool _isCancel = url.contains('cancel') && url.contains(AppConstants.BASE_URL);
+    if (_canRedirect) {
+      bool _isSuccess =
+          url.contains('success') && url.contains(AppConstants.BASE_URL);
+      bool _isFailed =
+          url.contains('fail') && url.contains(AppConstants.BASE_URL);
+      bool _isCancel =
+          url.contains('cancel') && url.contains(AppConstants.BASE_URL);
       if (_isSuccess || _isFailed || _isCancel) {
         _canRedirect = false;
       }
       if (_isSuccess) {
         MailHelper mailHelper = MailHelper();
         mailHelper.sendGmail(widget.orderModel);
-        Get.offNamed(RouteHelper.getOrderSuccessPage(widget.orderModel.id.toString(), 'success'));
+        Get.offNamed(RouteHelper.getOrderSuccessPage(
+            widget.orderModel.id.toString(), 'success'));
       } else if (_isFailed || _isCancel) {
-        Get.offNamed(RouteHelper.getOrderSuccessPage(widget.orderModel.id.toString(), 'fail'));
-      }else{
-        print("Encountered problem isSuccess = " + _isSuccess.toString() + " isFailed = " + _isFailed.toString() + " isCancel = " + _isCancel.toString());
+        Get.offNamed(RouteHelper.getOrderSuccessPage(
+            widget.orderModel.id.toString(), 'fail'));
+      } else {
+        print("Encountered problem isSuccess = " +
+            _isSuccess.toString() +
+            " isFailed = " +
+            _isFailed.toString() +
+            " isCancel = " +
+            _isCancel.toString());
       }
     }
   }
@@ -127,8 +139,6 @@ class _PaymentPageState extends State<PaymentPage> {
     } else {
       print("app exited");
       return true;
-      // return Get.dialog(PaymentFailedDialog(orderID: widget.orderModel.id.toString()));
     }
   }
-
 }

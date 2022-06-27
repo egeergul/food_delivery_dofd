@@ -61,7 +61,7 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
                       child: Row(
                         children: [
                           SmallText(
-                            height: 1.8 ,
+                            height: 1.8,
                             text: hiddenText ? "Show more" : "Show less ",
                             color: AppColors.mainColor,
                           ),

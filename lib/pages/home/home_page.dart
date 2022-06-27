@@ -18,20 +18,18 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-  List pages =[
+  List pages = [
     MainFoodPage(),
-    //OrderPage(),
-    //SignInPage(),
     CartHistory(),
-    AccountPage( ),
+    AccountPage(),
   ];
 
   void onTapNav(int index) {
     setState(() {
       _selectedIndex = index;
     });
-
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,19 +45,22 @@ class _HomePageState extends State<HomePage> {
         onTap: onTapNav,
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined,),
-              label: "home",
+            icon: Icon(
+              Icons.home_outlined,
+            ),
+            label: "home",
           ),
-          //BottomNavigationBarItem(
-           // icon: Icon(Icons.archive,),
-            //label: "history",
-          //),
+
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart,),
+            icon: Icon(
+              Icons.shopping_cart,
+            ),
             label: "cart",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person,),
+            icon: Icon(
+              Icons.person,
+            ),
             label: "me",
           ),
         ],

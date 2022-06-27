@@ -25,8 +25,13 @@ class OrderSuccessPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(status == 1 ? Icons.check_circle_outline:Icons.warning_amber_outlined,
-              size: 100, color: AppColors.mainColor,),
+              Icon(
+                status == 1
+                    ? Icons.check_circle_outline
+                    : Icons.warning_amber_outlined,
+                size: 100,
+                color: AppColors.mainColor,
+              ),
               SizedBox(
                 height: Dimensions.height30,
               ),
@@ -51,10 +56,15 @@ class OrderSuccessPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
-              SizedBox(height: Dimensions.height30,),
-              
-              Padding(padding: EdgeInsets.all(Dimensions.height10),
-              child: CustomButton(buttonText: 'Back to home', onPressed: () => Get.offAllNamed(RouteHelper.getInitial())),)
+              SizedBox(
+                height: Dimensions.height30,
+              ),
+              Padding(
+                padding: EdgeInsets.all(Dimensions.height10),
+                child: CustomButton(
+                    buttonText: 'Back to home',
+                    onPressed: () => Get.offAllNamed(RouteHelper.getInitial())),
+              )
             ],
           ),
         ),

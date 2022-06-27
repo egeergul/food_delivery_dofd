@@ -25,28 +25,19 @@ class AuthController extends GetxController implements GetxService {
           ? "Something went wrong! Please make sure your credentials are correct and try again"
           : response.body['errors'][0]['message'];
       responseModel = ResponseModel(false, error);
-
-
     }
     _isLoading = false;
     update();
     return responseModel;
   }
 
-
-
-
   Future<ResponseModel> login(String email, String password) async {
-
     _isLoading = true;
     update();
     Response response = await authRepo.login(email, password);
     ResponseModel responseModel;
     if (response.statusCode == 200) {
-
       authRepo.saveUserToken(response.body["token"]);
-      print("My token is " + response.body["token"]);
-
       responseModel = ResponseModel(true, response.body["token"]);
     } else {
       responseModel = ResponseModel(false, response.statusText!);
@@ -68,7 +59,7 @@ class AuthController extends GetxController implements GetxService {
     return authRepo.clearSharedData();
   }
 
-  Future <Response> deleteAccount(String email) async {
+  Future<Response> deleteAccount(String email) async {
     return await authRepo.deleteAccount(email);
   }
 }

@@ -6,24 +6,26 @@ import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:get/get.dart';
-class OrderRepo{
+
+class OrderRepo {
   final ApiClient apiClient;
   final SharedPreferences sharedPreferences;
+
   OrderRepo({required this.apiClient, required this.sharedPreferences});
 
-
-  Future<Response> placeOrder(PlaceOrderBody placeOrder) async{ //ADAMIN METHODU
-    return await apiClient.postData(AppConstants.PLACE_ORDER_URI, placeOrder.toJson());
+  Future<Response> placeOrder(PlaceOrderBody placeOrder) async {
+    return await apiClient.postData(
+        AppConstants.PLACE_ORDER_URI, placeOrder.toJson());
   }
 
-  Future<Response> getOrderList() async{ //ADAMIN METHODU
+  Future<Response> getOrderList() async {
     return await apiClient.getData(AppConstants.ORDER_LIST_URI);
   }
 
-  Future<Response> getAllOrders() async{ // BORA VE EGENIN METHODU
-    Response response =  await apiClient.getData(AppConstants.ALL_ORDERS_LIST_URI,);
-    //print("RESPONSE FROM REPO " + response.statusCode.toString());
+  Future<Response> getAllOrders() async {
+    Response response = await apiClient.getData(
+      AppConstants.ALL_ORDERS_LIST_URI,
+    );
     return response;
   }
-
 }

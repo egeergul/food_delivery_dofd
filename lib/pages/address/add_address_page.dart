@@ -87,7 +87,6 @@ class _AddAddressPageState extends State<AddAddressPage> {
               '${locationController.placemark.locality ?? ''}'
               '${locationController.placemark.postalCode ?? ''}'
               '${locationController.placemark.country ?? ''}';
-          print("address in my view is " + _addressController.text);
 
           return SingleChildScrollView(
             child: Column(
@@ -110,7 +109,8 @@ class _AddAddressPageState extends State<AddAddressPage> {
                               arguments: PickAddressMap(
                                 fromSignUp: false,
                                 fromAddress: true,
-                                googleMapController: locationController.mapController ,
+                                googleMapController:
+                                    locationController.mapController,
                               ));
                         },
                         zoomControlsEnabled: false,
@@ -131,52 +131,6 @@ class _AddAddressPageState extends State<AddAddressPage> {
                     ],
                   ),
                 ),
-                /*Padding(
-                  padding: EdgeInsets.only(
-                      left: Dimensions.width20, top: Dimensions.height20),
-                  child: SizedBox(
-                    height: Dimensions.height10 * 5,
-                    child: ListView.builder(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: locationController.addressTypeList.length,
-                        itemBuilder: (context, index) {
-                          return InkWell(
-                            onTap: () {
-                              locationController.setAddressTypeIndex(index);
-                            },
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: Dimensions.width20,
-                                  vertical: Dimensions.height10),
-                              margin:
-                                  EdgeInsets.only(right: Dimensions.width10),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                      Dimensions.radius20 / 4),
-                                  color: Theme.of(context).cardColor,
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.grey[200]!,
-                                        spreadRadius: 1,
-                                        blurRadius: 5)
-                                  ]),
-                              child: Icon(
-                                index == 0
-                                    ? Icons.home_filled
-                                    : index == 1
-                                        ? Icons.work
-                                        : Icons.location_on,
-                                color:
-                                    locationController.addressTypeIndex == index
-                                        ? AppColors.mainColor
-                                        : Theme.of(context).disabledColor,
-                              ),
-                            ),
-                          );
-                        }),
-                  ),
-                ),*/
                 SizedBox(
                   height: Dimensions.height20,
                 ),

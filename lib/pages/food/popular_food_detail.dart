@@ -21,7 +21,9 @@ import '../home/main_food_page.dart';
 class PopularFoodDetail extends StatelessWidget {
   final int pageId;
   final String page;
-  const PopularFoodDetail({Key? key, required this.pageId, required this.page }) : super(key: key);
+
+  const PopularFoodDetail({Key? key, required this.pageId, required this.page})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,6 @@ class PopularFoodDetail extends StatelessWidget {
         Get.find<PopularProductController>().popularProductList[pageId];
     Get.find<PopularProductController>()
         .initProduct(product, Get.find<CartController>());
-    //var product = Get.find<PopularProductController>( ).popularProductListHardcoded[pageId];
     return Scaffold(
       backgroundColor: AppColors.mainBackgroundColor,
       body: Stack(
@@ -44,8 +45,9 @@ class PopularFoodDetail extends StatelessWidget {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: NetworkImage (AppConstants.BASE_URL + AppConstants.UPLOAD_URL  + product.img!  ))),
-                        //image: AssetImage("assets/image/" + product.img!))),
+                        image: NetworkImage(AppConstants.BASE_URL +
+                            AppConstants.UPLOAD_URL +
+                            product.img!))),
               )),
           // icon widgets
           Positioned(
@@ -57,11 +59,10 @@ class PopularFoodDetail extends StatelessWidget {
                 children: [
                   GestureDetector(
                       onTap: () {
-                        if(page=="cartpage"){
+                        if (page == "cartpage") {
                           Get.toNamed(RouteHelper.getCartPage());
-                        }else {
+                        } else {
                           Get.toNamed(RouteHelper.getInitial());
-
                         }
                       },
                       child: AppIcon(icon: Icons.arrow_back_ios)),
@@ -127,7 +128,7 @@ class PopularFoodDetail extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AppColumn(text: product.name!, rating:product.stars),
+                    AppColumn(text: product.name!, rating: product.stars),
                     SizedBox(
                       height: Dimensions.height20,
                     ),

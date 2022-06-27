@@ -23,7 +23,6 @@ class SignUpPage extends StatelessWidget {
     var nameController = TextEditingController();
     var phoneController = TextEditingController();
     var ageController = TextEditingController();
-    var signUpImages = ["t.png", "f.png", "g.png"];
 
     void _registration(AuthController authController) {
       String name = nameController.text.trim();
@@ -35,7 +34,9 @@ class SignUpPage extends StatelessWidget {
       if (age.isEmpty) {
         showCustomSnackBar("Type in your age!", title: "Age Verification");
       } else if (int.parse(age) < 21) {
-        showCustomSnackBar("We are sorry! Only users above tha age 21 can use our application", title: "Age verification");
+        showCustomSnackBar(
+            "We are sorry! Only users above tha age 21 can use our application",
+            title: "Age verification");
       } else if (name.isEmpty) {
         showCustomSnackBar("Type in your name!", title: "Name");
       } else if (phone.isEmpty) {
@@ -175,25 +176,7 @@ class SignUpPage extends StatelessWidget {
                       SizedBox(
                         height: Dimensions.screenHeight * 0.05,
                       ),
-                      // sign up options
-                      /*RichText(
-                          text: TextSpan(
-                              text: "Sig up using the following methods",
-                              style: TextStyle(
-                                  color: Colors.grey[500],
-                                  fontSize: Dimensions.font16))),
-                      Wrap(
-                        children: List.generate(
-                            3,
-                            (index) => Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: CircleAvatar(
-                                    radius: Dimensions.radius30,
-                                    backgroundImage: AssetImage(
-                                        "assets/image/" + signUpImages[index]),
-                                  ),
-                                )),
-                      )*/
+
                     ],
                   ),
                 )

@@ -19,7 +19,8 @@ class RecommendedFoodDetail extends StatelessWidget {
   final int pageId;
   final String page;
 
-  const RecommendedFoodDetail({Key? key, required this.pageId, required this.page  })
+  const RecommendedFoodDetail(
+      {Key? key, required this.pageId, required this.page})
       : super(key: key);
 
   @override
@@ -40,21 +41,18 @@ class RecommendedFoodDetail extends StatelessWidget {
               children: [
                 GestureDetector(
                     onTap: () {
-                      if(page=="cartpage"){
+                      if (page == "cartpage") {
                         Get.toNamed(RouteHelper.getCartPage());
-                      }else {
+                      } else {
                         Get.toNamed(RouteHelper.getInitial());
-
                       }
                     },
                     child: AppIcon(icon: Icons.clear)),
-                //AppIcon(icon: Icons.shopping_cart_outlined),
                 GetBuilder<PopularProductController>(builder: (controller) {
                   return GestureDetector(
-                    onTap:(){
-                      if(controller.totalItems >= 1){
-                        Get.toNamed( RouteHelper.getCartPage());
-
+                    onTap: () {
+                      if (controller.totalItems >= 1) {
+                        Get.toNamed(RouteHelper.getCartPage());
                       }
                     },
                     child: Stack(
@@ -62,29 +60,33 @@ class RecommendedFoodDetail extends StatelessWidget {
                         AppIcon(icon: Icons.shopping_cart_outlined),
                         Get.find<PopularProductController>().totalItems >= 1
                             ? Positioned(
-                          right: 0,
-                          top: 0,
-                            child: AppIcon(
-                              icon: Icons.circle,
-                              size: 20,
-                              iconColor: Colors.transparent,
-                              backgroundColor: AppColors.mainColor,
-                            ),
-                        )
+                                right: 0,
+                                top: 0,
+                                child: AppIcon(
+                                  icon: Icons.circle,
+                                  size: 20,
+                                  iconColor: Colors.transparent,
+                                  backgroundColor: AppColors.mainColor,
+                                ),
+                              )
                             : Container(),
                         Get.find<PopularProductController>().totalItems >= 1
                             ? Positioned(
-                          right: 3,
-                          top: 3,
-                          child: BigText(text: Get.find<PopularProductController>().totalItems.toString()
-                            ,size: 12, color: Colors.white,),
-                        )
+                                right: 3,
+                                top: 3,
+                                child: BigText(
+                                  text: Get.find<PopularProductController>()
+                                      .totalItems
+                                      .toString(),
+                                  size: 12,
+                                  color: Colors.white,
+                                ),
+                              )
                             : Container()
                       ],
                     ),
                   );
                 })
-
               ],
             ),
             bottom: PreferredSize(
@@ -106,10 +108,8 @@ class RecommendedFoodDetail extends StatelessWidget {
             backgroundColor: AppColors.mainBackgroundColor,
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
-              //background: Image.asset(
-                //"assets/image/" + product.img!,
-                background: Image.network(
-                  AppConstants.BASE_URL + AppConstants.UPLOAD_URL + product.img!,
+              background: Image.network(
+                AppConstants.BASE_URL + AppConstants.UPLOAD_URL + product.img!,
                 width: double.maxFinite,
                 fit: BoxFit.cover,
               ),
@@ -187,7 +187,6 @@ class RecommendedFoodDetail extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-
                   GestureDetector(
                     onTap: () {
                       controller.addItem(product);

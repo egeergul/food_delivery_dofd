@@ -24,7 +24,7 @@ class Dimensions {
   static double width45 = screenHeight / (myScreenHeight / 45);
 
   // font sizes
-  static double font16= screenHeight / 52.7;
+  static double font16 = screenHeight / 52.7;
   static double font20 = screenHeight / (myScreenHeight / 20);
   static double font26 = screenHeight / 32.46;
 
@@ -48,5 +48,5 @@ class Dimensions {
   static double bottomHeight = screenHeight / 7.03;
 
   // splash screen dimensions
-  static double splashImage = screenHeight /  3.375;
+  static double splashImage = screenHeight / 3.375;
 }

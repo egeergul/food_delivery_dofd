@@ -8,21 +8,21 @@ class PlaceOrderBody {
   late String _address;
   late String _latitude;
   late String _longitude;
-  late  String _contactPersonName;
+  late String _contactPersonName;
   late String _contactPersonNumber;
 
-  PlaceOrderBody(
-      {required List<CartModel> cart,
-        required double orderAmount,
-        required double distance,
-        required String scheduleAt,
-        required String orderNote,
-        required String address,
-        required String latitude,
-        required String longitude,
-        required String contactPersonName,
-        required String contactPersonNumber,
-      }){
+  PlaceOrderBody({
+    required List<CartModel> cart,
+    required double orderAmount,
+    required double distance,
+    required String scheduleAt,
+    required String orderNote,
+    required String address,
+    required String latitude,
+    required String longitude,
+    required String contactPersonName,
+    required String contactPersonNumber,
+  }) {
     this._cart = cart;
     this._orderAmount = orderAmount;
     this._orderNote = orderNote;
@@ -43,9 +43,13 @@ class PlaceOrderBody {
   double get distance => _distance;
 
   String get address => _address;
+
   String get latitude => _latitude;
+
   String get longitude => _longitude;
+
   String get contactPersonName => _contactPersonName;
+
   String get contactPersonNumber => _contactPersonNumber;
 
   PlaceOrderBody.fromJson(Map<String, dynamic> json) {
@@ -85,5 +89,4 @@ class PlaceOrderBody {
     data['contact_person_number'] = this._contactPersonNumber;
     return data;
   }
-
 }

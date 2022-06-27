@@ -24,24 +24,19 @@ class AccountPage extends StatelessWidget {
     bool _userLoggedIn = Get.find<AuthController>().userLoggedIn();
     if (_userLoggedIn) {
       Get.find<UserController>().getUserInfo();
-      print("User has logged in");
     }
 
-    _deleteAccount(String email){
-      if (Get.find<AuthController>()
-          .userLoggedIn()) {
-        Get.find<AuthController>()
-            .clearSharedData();
+    _deleteAccount(String email) {
+      if (Get.find<AuthController>().userLoggedIn()) {
+        Get.find<AuthController>().clearSharedData();
 
         Get.find<AuthController>().deleteAccount(email);
         Get.find<CartController>().clear();
-        Get.find<CartController>()
-            .clearCartHistory();
+        Get.find<CartController>().clearCartHistory();
         Get.find<LocationController>().clearAddressList();
         Get.offNamed(RouteHelper.getSignInPage());
       } else {
-        Get.offNamed(
-            RouteHelper.getSignInPage());
+        Get.offNamed(RouteHelper.getSignInPage());
       }
     }
 
@@ -63,14 +58,7 @@ class AccountPage extends StatelessWidget {
                       margin: EdgeInsets.only(top: Dimensions.height20),
                       child: Column(
                         children: [
-                          // profile
-                         /* AppIcon(
-                            icon: Icons.person,
-                            backgroundColor: AppColors.mainColor,
-                            iconColor: Colors.white,
-                            size: Dimensions.height15 * 10,
-                            iconSize: Dimensions.height15 * 5,
-                          ),*/
+                         
                           SizedBox(
                             height: Dimensions.height30,
                           ),
@@ -134,34 +122,40 @@ class AccountPage extends StatelessWidget {
                                         locationController
                                             .addressList.isEmpty) {
                                       return GestureDetector(
-                                        onTap: (){
-                                          Get.offNamed(RouteHelper.getAddressPage());
+                                        onTap: () {
+                                          Get.offNamed(
+                                              RouteHelper.getAddressPage());
                                         },
                                         child: AccountWidget(
                                           appIcon: AppIcon(
                                             icon: Icons.location_on,
-                                            backgroundColor: AppColors.mainColor,
+                                            backgroundColor:
+                                                AppColors.mainColor,
                                             iconColor: Colors.white,
                                             size: Dimensions.height10 * 5,
-                                            iconSize: Dimensions.height10 * 5 / 2,
+                                            iconSize:
+                                                Dimensions.height10 * 5 / 2,
                                           ),
                                           bigText: BigText(
                                             text: "Fill in your address",
                                           ),
                                         ),
                                       );
-                                    }else{
+                                    } else {
                                       return GestureDetector(
-                                        onTap: (){
-                                          Get.offNamed(RouteHelper.getAddressPage());
+                                        onTap: () {
+                                          Get.offNamed(
+                                              RouteHelper.getAddressPage());
                                         },
                                         child: AccountWidget(
                                           appIcon: AppIcon(
                                             icon: Icons.location_on,
-                                            backgroundColor: AppColors.mainColor,
+                                            backgroundColor:
+                                                AppColors.mainColor,
                                             iconColor: Colors.white,
                                             size: Dimensions.height10 * 5,
-                                            iconSize: Dimensions.height10 * 5 / 2,
+                                            iconSize:
+                                                Dimensions.height10 * 5 / 2,
                                           ),
                                           bigText: BigText(
                                             text: "Your address",
@@ -173,22 +167,7 @@ class AccountPage extends StatelessWidget {
                                   SizedBox(
                                     height: Dimensions.height20,
                                   ),
-                                  //message
-                                  /**AccountWidget(
-                                      appIcon: AppIcon(
-                                      icon: Icons.message_outlined,
-                                      backgroundColor: Colors.redAccent,
-                                      iconColor: Colors.white,
-                                      size: Dimensions.height10 * 5,
-                                      iconSize: Dimensions.height10 * 5 / 2,
-                                      ),
-                                      bigText: BigText(
-                                      text: "Messages",
-                                      ),
-                                      ),
-                                      SizedBox(
-                                      height: Dimensions.height20,
-                                      ),*/
+
                                   // log out
                                   GestureDetector(
                                     onTap: () {
@@ -198,15 +177,15 @@ class AccountPage extends StatelessWidget {
                                             .clearSharedData();
                                         //Get.find<CartController>().clear();
                                         //Get.find<CartController>()
-                                          //  .clearCartHistory();
-                                        Get.find<LocationController>().clearAddressList();
+                                        //  .clearCartHistory();
+                                        Get.find<LocationController>()
+                                            .clearAddressList();
 
                                         Get.offNamed(
                                             RouteHelper.getSignInPage());
                                       } else {
                                         Get.offNamed(
                                             RouteHelper.getSignInPage());
-                                        print("Logged out");
                                       }
                                     },
                                     child: AccountWidget(
@@ -228,31 +207,31 @@ class AccountPage extends StatelessWidget {
                                     height: Dimensions.height20,
                                   ),
                                   GestureDetector(
-                                    onTap: (){
-                                      print("Deleting account...");
+                                    onTap: () {
                                       showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) {
-                                          return AlertDialog(
-                                            title: Text("Warning!"),
-                                            content: Text("Are you sure you want to delete this account?"),
-                                              actions: <Widget>[
-                                                TextButton(
-                                                    child: Text('Yes'),
-                                                    onPressed: () {
-                                                      _deleteAccount(userController.userModel!.id.toString());
-
-                                                    }),
-                                                TextButton(
-                                                    child: Text('No'),
-                                                    onPressed: () {
-                                                      Navigator.of(context).pop();
-                                                    })
-                                              ]
-
-                                          );
-                                        }
-                                      );
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                                title: Text("Warning!"),
+                                                content: Text(
+                                                    "Are you sure you want to delete this account?"),
+                                                actions: <Widget>[
+                                                  TextButton(
+                                                      child: Text('Yes'),
+                                                      onPressed: () {
+                                                        _deleteAccount(
+                                                            userController
+                                                                .userModel!.id
+                                                                .toString());
+                                                      }),
+                                                  TextButton(
+                                                      child: Text('No'),
+                                                      onPressed: () {
+                                                        Navigator.of(context)
+                                                            .pop();
+                                                      })
+                                                ]);
+                                          });
                                     },
                                     child: AccountWidget(
                                       appIcon: AppIcon(
@@ -267,7 +246,6 @@ class AccountPage extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-
                                 ],
                               ),
                             ),
@@ -324,7 +302,5 @@ class AccountPage extends StatelessWidget {
                   ),
                 );
         }));
-
-
   }
 }

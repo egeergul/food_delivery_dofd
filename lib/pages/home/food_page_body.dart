@@ -52,7 +52,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           return popularProducts.isLoaded
               ? Container(
                   height: Dimensions.pageViewContainer,
-                    child: PageView.builder(
+                  child: PageView.builder(
                       controller: pageController,
                       itemCount: popularProducts.popularProductList.length,
                       itemBuilder: (context, position) {
@@ -126,7 +126,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        Get.toNamed(RouteHelper.getRecommendedFood(index , "home"));
+                        Get.toNamed(
+                            RouteHelper.getRecommendedFood(index, "home"));
                       },
                       child: Container(
                         margin: EdgeInsets.only(
@@ -145,7 +146,6 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                 color: Colors.white38,
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
-                                  //image: AssetImage("assets/image/" + recommendedProduct.recommendedProductList[index].img!  ),
 
                                   image: NetworkImage(AppConstants.BASE_URL +
                                       AppConstants.UPLOAD_URL +
@@ -179,9 +179,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                           MainAxisAlignment.center,
                                       children: [
                                         BigText(
-                                            text: recommendedProduct
-                                                .recommendedProductList[index]
-                                                .name!,
+                                          text: recommendedProduct
+                                              .recommendedProductList[index]
+                                              .name!,
                                         ),
                                         SizedBox(
                                           height: Dimensions.height10,
@@ -240,8 +240,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       child: Stack(
         children: [
           GestureDetector(
-            onTap: (){
-              Get.toNamed(RouteHelper.getPopularFood(index , "home " )  );
+            onTap: () {
+              Get.toNamed(RouteHelper.getPopularFood(index, "home "));
             },
             child: Container(
               height: Dimensions.pageViewController,
@@ -249,23 +249,18 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   left: Dimensions.width10, right: Dimensions.width10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimensions.radius30),
-                color: index.isEven ?  AppColors.yellowColor : Color(0xFF9294cc),
+                color: index.isEven ? AppColors.yellowColor : Color(0xFF9294cc),
                 image: DecorationImage(
                     fit: BoxFit.cover,
-                    //image: AssetImage("assets/image/" + popularProduct.img!  ),
-
-                  image: NetworkImage(AppConstants.BASE_URL +
+                    image: NetworkImage(AppConstants.BASE_URL +
                         AppConstants.UPLOAD_URL +
-                        popularProduct.img!)
-
-                ),
+                        popularProduct.img!)),
               ),
             ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-
               height: Dimensions.pageViewTextController,
               margin: EdgeInsets.only(
                   left: Dimensions.width30,
@@ -273,7 +268,6 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   bottom: Dimensions.height30),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.radius20),
-                  //color: AppColors.yellowColor,
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
@@ -296,12 +290,12 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     ),
                   ]),
               child: Container(
-
                 padding: EdgeInsets.only(
                     top: Dimensions.height15,
                     left: Dimensions.width15,
                     right: Dimensions.width15),
-                child: AppColumn(text: popularProduct.name!, rating: popularProduct.stars!),
+                child: AppColumn(
+                    text: popularProduct.name!, rating: popularProduct.stars!),
               ),
             ),
           )

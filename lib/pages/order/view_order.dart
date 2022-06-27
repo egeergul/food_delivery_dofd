@@ -62,19 +62,20 @@ class ViewOrder extends StatelessWidget {
                                     InkWell(
                                       onTap: () => null,
                                       child: Container(
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.circular(
-                                                Dimensions.radius20 / 4),
-                                            border: Border.all(
-                                                width: 1,
-                                                color: Theme.of(context)
-                                                    .primaryColor)),
-                                        child: Container(
-                                          margin: EdgeInsets.all(Dimensions.height10/2),
-                                          child: Text("Track order"),
-                                        )
-                                      ),
+                                          decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      Dimensions.radius20 / 4),
+                                              border: Border.all(
+                                                  width: 1,
+                                                  color: Theme.of(context)
+                                                      .primaryColor)),
+                                          child: Container(
+                                            margin: EdgeInsets.all(
+                                                Dimensions.height10 / 2),
+                                            child: Text("Track order"),
+                                          )),
                                     )
                                   ],
                                 )

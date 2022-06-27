@@ -11,16 +11,13 @@ class AppTextField extends StatelessWidget {
   bool isObscure;
   TextInputType keyboardType;
 
-
-
-
   AppTextField(
       {Key? key,
       required this.textController,
       required this.hintText,
       required this.icon,
       this.isObscure = false,
-        this.keyboardType =TextInputType.text })
+      this.keyboardType = TextInputType.text})
       : super(key: key);
 
   @override
@@ -41,7 +38,7 @@ class AppTextField extends StatelessWidget {
           ]),
       child: TextField(
         keyboardType: keyboardType,
-        obscureText: isObscure?true:false,
+        obscureText: isObscure ? true : false,
         controller: textController,
         decoration: InputDecoration(
           hintText: hintText,
@@ -52,18 +49,15 @@ class AppTextField extends StatelessWidget {
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(Dimensions.radius15),
               borderSide: BorderSide(
-                  //color: Colors.white,
                   width: 1.0)),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(Dimensions.radius15),
               borderSide: BorderSide(
-                  //color: AppColors.mainColorTransparent,
                   color: Colors.white,
                   width: 1.0)),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(Dimensions.radius15),
               borderSide: BorderSide(
-                  //color: AppColors.mainColorTransparent,
                   color: Colors.white,
                   width: 1.0)),
         ),

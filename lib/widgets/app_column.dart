@@ -11,14 +11,18 @@ class AppColumn extends StatelessWidget {
   final String text;
   final int rating;
 
-  const AppColumn({Key? key, required this.text, this.rating = 5}) : super(key: key);
+  const AppColumn({Key? key, required this.text, this.rating = 5})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        BigText(text: text, size: Dimensions.font26 /1.5,),
+        BigText(
+          text: text,
+          size: Dimensions.font26 / 1.5,
+        ),
         SizedBox(height: Dimensions.height10),
         Row(
           children: [
@@ -35,12 +39,8 @@ class AppColumn extends StatelessWidget {
               width: 10,
             ),
             SmallText(text: rating.toString() + "/5"),
-
-
           ],
         ),
-
-
       ],
     );
   }

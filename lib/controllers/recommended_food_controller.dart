@@ -6,9 +6,7 @@ import '../models/products_model.dart';
 class RecommendedProductController extends GetxController {
   final RecommendedProductRepo recommendedProductRepo;
 
-
-
-  RecommendedProductController ({required this.recommendedProductRepo});
+  RecommendedProductController({required this.recommendedProductRepo});
 
   List<dynamic> _recommendedProductList = [];
 
@@ -19,19 +17,14 @@ class RecommendedProductController extends GetxController {
   bool get isLoaded => _isLoaded;
 
   Future<void> getRecommendedProductList() async {
-    Response response = await recommendedProductRepo.getRecommendedProductList();
+    Response response =
+        await recommendedProductRepo.getRecommendedProductList();
     if (response.statusCode == 200) {
-      print("got products recommended ");
       _recommendedProductList = [];
-      _recommendedProductList  .addAll(Product.fromJson(response.body).products);
-      //_recommendedProductList  .addAll(Product.fromJson(data).products);
-
+      _recommendedProductList.addAll(Product.fromJson(response.body).products);
       _isLoaded = true;
 
       update();
-    } else {
-      print("App base url is " + AppConstants.BASE_URL );
-      print("could not ge t products recommended ");
     }
   }
 }

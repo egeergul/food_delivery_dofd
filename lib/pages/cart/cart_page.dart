@@ -38,12 +38,6 @@ class CartPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  /*AppIcon(
-                    icon: Icons.arrow_back,
-                    iconColor: Colors.white,
-                    backgroundColor: AppColors.mainColor,
-                    iconSize: Dimensions.iconSize24,
-                  ),*/
                   SizedBox(
                     width: Dimensions.width20 * 5,
                   ),
@@ -58,12 +52,6 @@ class CartPage extends StatelessWidget {
                       iconSize: Dimensions.iconSize24,
                     ),
                   ),
-                  /*AppIcon(
-                    icon: Icons.shopping_cart,
-                    iconColor: Colors.white,
-                    backgroundColor: AppColors.mainColor,
-                    iconSize: Dimensions.iconSize24,
-                  ),*/
                 ],
               )),
           //body
@@ -136,8 +124,6 @@ class CartPage extends StatelessWidget {
                                                           cartController
                                                               .getItems[index]
                                                               .img!)),
-                                              // image: AssetImage(
-                                              //   "assets/image/${cartController.getItems[index].img}")),
                                               borderRadius:
                                                   BorderRadius.circular(
                                                       Dimensions.radius20),
@@ -214,7 +200,6 @@ class CartPage extends StatelessWidget {
                                                                     index]
                                                                 .quantity
                                                                 .toString()),
-                                                        // popularProduct.inCartItems.toString()),
                                                         SizedBox(
                                                           width: Dimensions
                                                                   .width20 /
@@ -299,39 +284,29 @@ class CartPage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // popularProduct.addItem(product);
                         if (Get.find<AuthController>().userLoggedIn()) {
-                          //cartController.addToHistory();//BU TUTORIALDAN SILINMIŞ MII????
                           if (Get.find<LocationController>()
                               .addressList
                               .isEmpty) {
-                            print("ADDRESS PAGE E GIDIYORUMM" +
-                                Get.find<LocationController>()
-                                    .addressList
-                                    .isEmpty
-                                    .toString());
                             Get.toNamed(RouteHelper.getAddressPage());
                           } else {
-
                             var location =
                                 Get.find<LocationController>().getUserAddress();
                             var cart = Get.find<CartController>().getItems;
                             var user = Get.find<UserController>().userModel;
                             PlaceOrderBody placeOrder = PlaceOrderBody(
-                              cart: cart,
-                              orderAmount: 100.0,
-                              orderNote: "Note about food",
-                              address: location.address,
-                              latitude: location.latitude,
-                              longitude: location.longitude,
-                              contactPersonNumber: user!.phone,
-                              contactPersonName: user!.name,
-                              scheduleAt: '',
-                              distance: 10.0
-                            );
-                            Get.find<OrderController>().placeOrder(
-                            placeOrder,
-                            _callback);
+                                cart: cart,
+                                orderAmount: 100.0,
+                                orderNote: "Note about food",
+                                address: location.address,
+                                latitude: location.latitude,
+                                longitude: location.longitude,
+                                contactPersonNumber: user!.phone,
+                                contactPersonName: user!.name,
+                                scheduleAt: '',
+                                distance: 10.0);
+                            Get.find<OrderController>()
+                                .placeOrder(placeOrder, _callback);
                           }
                         } else {
                           Get.toNamed(RouteHelper.getSignInPage());
@@ -355,10 +330,8 @@ class CartPage extends StatelessWidget {
                       ),
                     )
                   ],
-
                 )
               : Container(),
-
         );
       }),
     );

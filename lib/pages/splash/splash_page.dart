@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen>
   late Animation<double> animation;
   late AnimationController controller;
 
-  Future <void> _loadResources() async {
+  Future<void> _loadResources() async {
     await Get.find<PopularProductController>().getPopularProductList();
     await Get.find<RecommendedProductController>().getRecommendedProductList();
   }
@@ -36,33 +36,31 @@ class _SplashScreenState extends State<SplashScreen>
       ..forward();
     animation = new CurvedAnimation(parent: controller, curve: Curves.linear);
 
-    Timer(const Duration(seconds: 3),
-    ()
-    {
+    Timer(const Duration(seconds: 3), () {
       if (Get.find<AuthController>().userLoggedIn()) {
         Get.offNamed(RouteHelper.getInitial());
       } else {
         Get.toNamed(RouteHelper.getSignInPage());
       }
-    }
-  );
-}
+    });
+  }
 
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    backgroundColor: AppColors.mainBackgroundColor,
-    body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ScaleTransition(
-            scale: animation,
-            child: Center(
-                child: Image.asset(
-                  "assets/image/logo_pink.jpg",
-                  width: Dimensions.splashImage,
-                ))),
-      ],
-    ),
-  );
-}}
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.mainBackgroundColor,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ScaleTransition(
+              scale: animation,
+              child: Center(
+                  child: Image.asset(
+                "assets/image/logo_pink.jpg",
+                width: Dimensions.splashImage,
+              ))),
+        ],
+      ),
+    );
+  }
+}

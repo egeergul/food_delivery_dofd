@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:core';
-
 import 'package:flutter/cupertino.dart';
 import 'package:dofd_user_panel/data/api/api_checker.dart';
 import 'package:dofd_user_panel/data/repository/location_repo.dart';
@@ -57,11 +56,11 @@ class LocationController extends GetxController implements GetxService {
   bool _buttonDisabled = true; //showing and hiding the button as the map loads
   bool get buttonDisabled => _buttonDisabled;
 
-
   /*
   save the google map suggestions for address
    */
   List<Prediction> _predictionList = [];
+
   void setMapController(GoogleMapController mapController) {
     _mapController = mapController;
   }
@@ -92,11 +91,10 @@ class LocationController extends GetxController implements GetxService {
               speedAccuracy: 1,
               speed: 1);
         }
-          ResponseModel _responseModel = await getZone(
+        ResponseModel _responseModel = await getZone(
             position.target.latitude.toString(),
             position.target.longitude.toString(),
             false);
-        print("RESPONSE MODEL PRINTLIYORUM " + _responseModel.message.toString());
         /*
         if button value is false we are in the service area
          */
@@ -124,9 +122,6 @@ class LocationController extends GetxController implements GetxService {
     Response response = await locationRepo.getAddressFromGeocode(latLng);
     if (response.body["status"] == "OK") {
       _address = response.body["results"][0]['formatted_address'].toString();
-      //print("printing address" + _address);
-    } else {
-      print("Error getting the google api " + response.body.toString());
     }
     update();
     return _address;
@@ -164,17 +159,12 @@ class LocationController extends GetxController implements GetxService {
     ResponseModel responseModel;
     if (response.statusCode == 200) {
       // means it is working
-      print("after await0");
 
       await getAddressList();
-      print("after await1");
       String message = response.body["message"];
       responseModel = ResponseModel(true, message);
-      print("after await2");
       await saveUserAddress(addressModel);
-      print("after await3");
     } else {
-      print("count not save the address");
       responseModel = ResponseModel(false, response.statusText!);
     }
     update();
@@ -184,16 +174,13 @@ class LocationController extends GetxController implements GetxService {
   Future<void> getAddressList() async {
     Response response = await locationRepo.getAllAddress();
     if (response.statusCode == 200) {
-      print("adddding adresss");
       _addressList = [];
       _allAddressList = [];
       response.body.forEach((address) {
-        print("aADDINNGGG");
         _addressList.add(AddressModel.fromJson(address));
         _allAddressList.add(AddressModel.fromJson(address));
       });
     } else {
-      print("adddding adresss failed");
       _addressList = [];
       _allAddressList = [];
     }
@@ -231,14 +218,11 @@ class LocationController extends GetxController implements GetxService {
       _isLoading = true;
     }
     update();
-    Response response  = await locationRepo.getZone(lat, lng);
-    if(response.statusCode==200){
+    Response response = await locationRepo.getZone(lat, lng);
+    if (response.statusCode == 200) {
       _inZone = true;
-      print("INZONE 200");
       _responseModel = ResponseModel(true, response.body["zone_id"].toString());
-    }
-    else{
-      print("INZONE ELSE 200" + response.statusCode.toString());
+    } else {
       _inZone = false;
       _responseModel = ResponseModel(true, response.statusText!);
     }
@@ -248,53 +232,49 @@ class LocationController extends GetxController implements GetxService {
       _isLoading = false;
     }
     _inZone = true;
-    /*
-    for debugging
-     */
-    //print(response.statusCode);//200 //404 //500 //403(Permission problem)
     update();
 
     return _responseModel;
   }
 
-  Future<List<Prediction>>searchLocation(BuildContext context, String text) async {
-    if(text.isNotEmpty){
+  Future<List<Prediction>> searchLocation(
+      BuildContext context, String text) async {
+    if (text.isNotEmpty) {
       Response response = await locationRepo.searchLocation(text);
-      if(response.statusCode ==200&&response.body['status'] == 'OK'){
+      if (response.statusCode == 200 && response.body['status'] == 'OK') {
         _predictionList = [];
-        response.body['predictions'].forEach((prediction)=>_predictionList.add(Prediction.fromJson(prediction)));
-      }else{
+        response.body['predictions'].forEach((prediction) =>
+            _predictionList.add(Prediction.fromJson(prediction)));
+      } else {
         ApiChecker.checkApi(response);
       }
     }
     return _predictionList;
   }
 
-  setLocation(String placeID, String address, GoogleMapController mapController) async {
+  setLocation(
+      String placeID, String address, GoogleMapController mapController) async {
     _loading = true;
     update();
     PlacesDetailsResponse detail;
     Response response = await locationRepo.setLocation(placeID);
     detail = PlacesDetailsResponse.fromJson(response.body);
     _pickPosition = Position(
-      latitude: detail.result.geometry!.location.lat,
-      longitude: detail.result.geometry!.location.lng,
-      timestamp: DateTime.now(),
-      accuracy: 1,
-      altitude: 1,
-      heading: 1,
-      speed: 1,
-      speedAccuracy: 1
-    );
+        latitude: detail.result.geometry!.location.lat,
+        longitude: detail.result.geometry!.location.lng,
+        timestamp: DateTime.now(),
+        accuracy: 1,
+        altitude: 1,
+        heading: 1,
+        speed: 1,
+        speedAccuracy: 1);
     _pickPlacemark = Placemark(name: address);
     _changeAddress = false;
-    if(!mapController.isNull){
-      mapController.animateCamera(CameraUpdate.newCameraPosition(
-        CameraPosition(target: LatLng(
-          detail.result.geometry!.location.lat,
-          detail.result.geometry!.location.lng
-        ), zoom: 17)
-      ));
+    if (!mapController.isNull) {
+      mapController.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+          target: LatLng(detail.result.geometry!.location.lat,
+              detail.result.geometry!.location.lng),
+          zoom: 17)));
     }
     _loading = false;
     update();

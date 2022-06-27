@@ -72,7 +72,7 @@ class _PickAddressMapState extends State<PickAddressMap> {
                   Get.find<LocationController>()
                       .updatePosition(_cameraPosition, false);
                 },
-                onMapCreated: (GoogleMapController mapController){
+                onMapCreated: (GoogleMapController mapController) {
                   _mapController = mapController;
                 },
               ),
@@ -93,9 +93,11 @@ class _PickAddressMapState extends State<PickAddressMap> {
                 right: Dimensions.width20,
                 left: Dimensions.width20,
                 child: InkWell(
-                  onTap: ()=> Get.dialog(LocationDialogue(mapController: _mapController)),
+                  onTap: () => Get.dialog(
+                      LocationDialogue(mapController: _mapController)),
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: Dimensions.width10),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: Dimensions.width10),
                     height: 50,
                     decoration: BoxDecoration(
                         color: AppColors.mainColor,
@@ -117,8 +119,14 @@ class _PickAddressMapState extends State<PickAddressMap> {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         )),
-                        SizedBox(width: Dimensions.width10,),
-                        Icon(Icons.search, size: 25, color: AppColors.yellowColor,)
+                        SizedBox(
+                          width: Dimensions.width10,
+                        ),
+                        Icon(
+                          Icons.search,
+                          size: 25,
+                          color: AppColors.yellowColor,
+                        )
                       ],
                     ),
                   ),
@@ -138,7 +146,8 @@ class _PickAddressMapState extends State<PickAddressMap> {
                                   ? 'Pick Address'
                                   : 'Pick Location'
                               : 'Service is not available in your area',
-                          onPressed: (locationController.loading || locationController.buttonDisabled)
+                          onPressed: (locationController.loading ||
+                                  locationController.buttonDisabled)
                               ? null
                               : () {
                                   if (locationController
@@ -148,7 +157,6 @@ class _PickAddressMapState extends State<PickAddressMap> {
                                           null) {
                                     if (widget.fromAddress) {
                                       if (widget.googleMapController != null) {
-                                        print("Now you can click on this");
                                         widget.googleMapController!.moveCamera(
                                             CameraUpdate.newCameraPosition(
                                                 CameraPosition(

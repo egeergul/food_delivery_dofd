@@ -29,7 +29,6 @@ class _OrdersPageState extends State<OrdersPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     ordersList = Get.find<OrderController>().getAllOrders();
     super.initState();
   }
@@ -37,7 +36,6 @@ class _OrdersPageState extends State<OrdersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
         body: Stack(
       children: [
         GetBuilder<OrderController>(builder: (_orderController) {
@@ -54,23 +52,6 @@ class _OrdersPageState extends State<OrdersPage> {
               text: outputDate,
             );
           }
-          //ordersList = _orderController.orderList;
-          /*ordersList = Get.find<OrderController>().getAllOrders().then((value) {
-                //print("PRINTING ORDER LIST : " + ordersList.toString());
-                //ordersList1 = value;
-                //print("ORDERLIST1 " + ordersList1.toString());
-                //return ordersList;
-
-              });*/
-          //List<OrderModel> orders = [];
-
-          /*print(
-              "ORDERS PAGE ORDERS : "); //+ jsonDecode(_orderController.orders[0].id.toString()));
-          print("ORDERS PAGE ORDER LIST1 : " +
-              _orderController.orderList1.toString());
-          _orderController.orderList1.forEach((order) {
-            print("ORDERS PAGE INSIDE");
-          });*/
 
           return _orderController.orders.isNotEmpty
               ? Scaffold(
@@ -89,7 +70,8 @@ class _OrdersPageState extends State<OrdersPage> {
                           child: Column(
                             children: [
                               Container(
-                                margin: EdgeInsets.only(bottom: Dimensions.height20),
+                                margin: EdgeInsets.only(
+                                    bottom: Dimensions.height20),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -119,7 +101,7 @@ class _OrdersPageState extends State<OrdersPage> {
                                       onTap: () {
                                         showCustomSnackBar("APPROVED!",
                                             title: "ORDER HANDLING");
-                                            _orderController.acceptOrder(index);
+                                        _orderController.acceptOrder(index);
                                       },
                                       child: Container(
                                         decoration: BoxDecoration(
@@ -161,7 +143,10 @@ class _OrdersPageState extends State<OrdersPage> {
                     itemCount: _orderController.orderList1.length,
                   ),
                 )
-              : Center(child: CircularProgressIndicator(color: AppColors.mainColor,));
+              : Center(
+                  child: CircularProgressIndicator(
+                  color: AppColors.mainColor,
+                ));
         }),
       ],
     ));

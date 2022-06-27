@@ -2,16 +2,21 @@ class Product {
   int? _totalSize;
   int? _typeId;
   int? _offset;
-  late List<ProductModel>  _products;
+  late List<ProductModel> _products;
+
   List<ProductModel> get products => _products; // getter
-  
-  Product({required totalSize, required typeId, required offset, required  products}){
+
+  Product(
+      {required totalSize,
+      required typeId,
+      required offset,
+      required products}) {
     this._totalSize = totalSize;
     this._typeId = typeId;
     this._offset = offset;
     this._products = products;
   }
- 
+
   Product.fromJson(Map<String, dynamic> json) {
     _totalSize = json['total_size'];
     _typeId = json['type_id'];
@@ -23,10 +28,9 @@ class Product {
       });
     }
   }
-
 }
 
-class ProductModel  {
+class ProductModel {
   int? id;
   String? name;
   String? description;
@@ -40,17 +44,17 @@ class ProductModel  {
 
   ProductModel(
       {this.id,
-        this.name,
-        this.description,
-        this.price,
-        this.stars,
-        this.img,
-        this.location,
-        this.createdAt,
-        this.updatedAt,
-        this.typeId});
+      this.name,
+      this.description,
+      this.price,
+      this.stars,
+      this.img,
+      this.location,
+      this.createdAt,
+      this.updatedAt,
+      this.typeId});
 
-  ProductModel .fromJson(Map<String, dynamic> json) {
+  ProductModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     description = json['description'];
@@ -63,23 +67,18 @@ class ProductModel  {
     typeId = json['type_id'];
   }
 
-  Map<String, dynamic> toJson(){
+  Map<String, dynamic> toJson() {
     return {
-    'id' : this.id,
-    'name': this.name,
-    'description' :this.description,
-    'price': this.price,
-    'stars' : this.stars,
-    'img' : this.img,
-    'location' : this.location,
-    'created_at' : this.createdAt,
-    'updated_at' : this.updatedAt,
-    'type_id' : this.typeId
+      'id': this.id,
+      'name': this.name,
+      'description': this.description,
+      'price': this.price,
+      'stars': this.stars,
+      'img': this.img,
+      'location': this.location,
+      'created_at': this.createdAt,
+      'updated_at': this.updatedAt,
+      'type_id': this.typeId
     };
   }
-
-
-
-
-
 }
