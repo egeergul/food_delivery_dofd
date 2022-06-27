@@ -116,6 +116,9 @@ class _PaymentPageState extends State<PaymentPage> {
       if (_isSuccess) {
         MailHelper mailHelper = MailHelper();
         mailHelper.sendGmail(widget.orderModel);
+
+        // Burada placelemesi lazım orderi
+
         Get.offNamed(RouteHelper.getOrderSuccessPage(
             widget.orderModel.id.toString(), 'success'));
       } else if (_isFailed || _isCancel) {
@@ -137,7 +140,6 @@ class _PaymentPageState extends State<PaymentPage> {
       controllerGlobal.goBack();
       return Future.value(false);
     } else {
-      print("app exited");
       return true;
     }
   }
