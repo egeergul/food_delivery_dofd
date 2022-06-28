@@ -4,7 +4,7 @@ import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 
 class MailHelper {
-  sendGmail(OrderModel orderModel) async {
+  sendGmail(OrderModel orderModel, String mailContent) async {
     String username = 'boraaltinok26@gmail.com';
     String password = 'fcthkjswcupoxfdf';
     final smtpServer = gmail(username, password);
@@ -22,8 +22,7 @@ class MailHelper {
       ..subject = 'ORDER PLACED :: ${DateTime.now()}'
       ..text = 'Butona bastım geldi mi HE?.\nThis is line 2 of the text part.'
       ..html =
-          "<h1>ORDER HAS PLACED id = ${orderModel.id}</h1>\n<p> ORDER DETAILS!!: AMOUNT ${orderModel.orderAmount}, ADDRESS: ${orderModel.deliveryAddress}   </p>";
-
+          mailContent;
     try {
       final sendReport = await send(message, smtpServer);
       print('Message sent: ' + sendReport.toString());

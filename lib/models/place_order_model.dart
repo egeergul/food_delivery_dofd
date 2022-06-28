@@ -61,11 +61,8 @@ class PlaceOrderBody {
     }
 
     _orderAmount = json['order_amount'];
-
     _orderNote = json['order_note'];
-
     _distance = json['distance'];
-
     _address = json['address'];
     _latitude = json['latitude'];
     _longitude = json['longitude'];

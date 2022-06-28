@@ -1,11 +1,16 @@
+import 'package:dofd_user_panel/controllers/order_controller.dart';
+import 'package:dofd_user_panel/controllers/popular%20_product_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dofd_user_panel/base/custom_button.dart';
 import 'package:dofd_user_panel/routes/route_helper.dart';
 import 'package:dofd_user_panel/utils/colors.dart';
 import 'package:dofd_user_panel/utils/dimensions.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+
+import '../../controllers/cart_controller.dart';
 
 class OrderSuccessPage extends StatelessWidget {
   final String orderID;
@@ -17,7 +22,7 @@ class OrderSuccessPage extends StatelessWidget {
   Widget build(BuildContext context) {
     if (status == 0) {
       Future.delayed(Duration(seconds: 1), () {});
-    }
+    } 
     return Scaffold(
       body: Center(
         child: SizedBox(

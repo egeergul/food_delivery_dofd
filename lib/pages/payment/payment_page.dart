@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:convert';
 
+import 'package:dofd_user_panel/models/place_order_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dofd_user_panel/mail/mail_helper.dart';
@@ -14,11 +16,13 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class PaymentPage extends StatefulWidget {
   final OrderModel orderModel;
+  final String mailContent;
 
-  PaymentPage({required this.orderModel});
+
+  PaymentPage({required this.orderModel, required this.mailContent});
 
   @override
-  _PaymentPageState createState() => _PaymentPageState();
+  _PaymentPageState createState() => _PaymentPageState(mailContent);
 }
 
 class _PaymentPageState extends State<PaymentPage> {
@@ -29,6 +33,9 @@ class _PaymentPageState extends State<PaymentPage> {
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
   late WebViewController controllerGlobal;
+
+  String mailContent;
+  _PaymentPageState(  this.mailContent);
 
   @override
   void initState() {
@@ -45,10 +52,7 @@ class _PaymentPageState extends State<PaymentPage> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: const Text("Payment"),
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios),
-            onPressed: () => _exitApp(context),
-          ),
+          automaticallyImplyLeading: false,
           backgroundColor: AppColors.mainColor,
         ),
         body: Center(
@@ -102,7 +106,6 @@ class _PaymentPageState extends State<PaymentPage> {
   }
 
   void _redirect(String url) {
-    print("redirect");
     if (_canRedirect) {
       bool _isSuccess =
           url.contains('success') && url.contains(AppConstants.BASE_URL);
@@ -114,10 +117,11 @@ class _PaymentPageState extends State<PaymentPage> {
         _canRedirect = false;
       }
       if (_isSuccess) {
-        MailHelper mailHelper = MailHelper();
-        mailHelper.sendGmail(widget.orderModel);
 
-        // Burada placelemesi lazım orderi
+
+
+        MailHelper mailHelper = MailHelper();
+        mailHelper.sendGmail(widget.orderModel, mailContent);
 
         Get.offNamed(RouteHelper.getOrderSuccessPage(
             widget.orderModel.id.toString(), 'success'));

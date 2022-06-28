@@ -1,15 +1,11 @@
 import 'dart:convert';
 
-import 'package:dofd_user_panel/data/repository/location_repo.dart';
 import 'package:dofd_user_panel/data/repository/order_repo.dart';
 import 'package:dofd_user_panel/models/address_model.dart';
 import 'package:dofd_user_panel/models/order_model.dart';
 import 'package:dofd_user_panel/models/place_order_model.dart';
-import 'package:dofd_user_panel/models/response_model.dart';
-import 'package:geocoding/geocoding.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:intl/intl.dart';
 
 class OrderController extends GetxController implements GetxService {
   OrderRepo orderRepo;
@@ -37,7 +33,18 @@ class OrderController extends GetxController implements GetxService {
       _isLoading = false;
       String message = response.body['message'];
       String orderID = response.body['order_id'].toString();
-      callback(true, message, orderID);
+
+      DateTime now = DateTime.now();
+      String formattedDate = DateFormat('yyyy-MM-dd – kk:mm').format(now);
+
+      String mailContent = "<h1>New order has arrived!</h1></br>"
+          "<p>Order created at: ${formattedDate}</p></br>"
+          "<p>Name: ${placeOrder.contactPersonName}</p></br>"
+          "<p>Phone: ${placeOrder.contactPersonNumber}</p></br>"
+          "<p>Address: ${placeOrder.address}</p></br>"
+          "";
+
+      callback(true, message, orderID, mailContent);
     } else {
       callback(false, response.statusText, '-1');
     }
@@ -91,4 +98,6 @@ class OrderController extends GetxController implements GetxService {
   }
 
   void acceptOrder(int index) {}
+
+
 }

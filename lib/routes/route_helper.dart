@@ -43,8 +43,8 @@ class RouteHelper {
 
   static String getPickAddressPage() => "$pickAddressMap";
 
-  static String getPaymentPage(String id, int userID) =>
-      '$payment?id=$id&userID=$userID';
+  static String getPaymentPage(String id, int userID, String mailContent) =>
+      '$payment?id=$id&userID=$userID&mailContent=$mailContent';
 
   static String getOrderSuccessPage(String orderID, String status) =>
       '$orderSuccess?id=$orderID&status=$status';
@@ -100,9 +100,11 @@ class RouteHelper {
     GetPage(
         name: payment,
         page: () => PaymentPage(
-            orderModel: OrderModel(
-                id: int.parse(Get.parameters['id']!),
-                userId: int.parse(Get.parameters['userID']!)))),
+              orderModel: OrderModel(
+                  id: int.parse(Get.parameters['id']!),
+                  userId: int.parse(Get.parameters['userID']!)),
+              mailContent: Get.parameters['mailContent']!,
+            )),
     GetPage(
         name: orderSuccess,
         page: () => OrderSuccessPage(
